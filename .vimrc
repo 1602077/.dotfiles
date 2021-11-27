@@ -47,6 +47,8 @@ set encoding=UTF-8
 
 let g:airline_theme='minimalist'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 let g:ycm_autoclose_preview_window_after_completion=1
 
@@ -68,14 +70,17 @@ inoremap {;<CR>  {<CR>};<Esc>O
 " Normal Mode Remaps
 let mapleader = " "
 " Windows-manager remaps
-nnoremap <silent> <leader>t :term<CR>
-nnoremap <silent> <leader>F :NERDTreeToggle<CR>
-nnoremap <silent> <leader>h :wincmd h<CR>
-nnoremap <silent> <leader>l :wincmd l<CR>
-nnoremap <silent> <leader>j :wincmd j<CR>
-nnoremap <silent> <leader>k :wincmd k<CR>
-nnoremap <silent> <leader>f :Files<CR>
-noremap <silent> <leader>vs <C-W>v<CR>:wincmd l<CR>:Files<CR>
+nnoremap <silent><leader>t :term<CR>
+nnoremap <silent><leader>F :NERDTreeToggle<CR>
+nnoremap <silent><leader>h :wincmd h<CR>
+nnoremap <silent><leader>l :wincmd l<CR>
+nnoremap <silent><leader>j :wincmd j<CR>
+nnoremap <silent><leader>k :wincmd k<CR>
+nnoremap <silent><leader>f :Files<CR>
+nnoremap <silent><leader>vs <C-W>v<CR>:wincmd l<CR>:Files<CR>
+
+nnoremap <silent><leader>, :bprev<CR>
+nnoremap <silent><leader>. :bnext<CR>
 
 " Git remaps using vim-fugitive
 "nnoremap <silent> <leader>g :GFiles<CR>
