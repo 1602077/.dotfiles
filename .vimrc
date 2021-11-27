@@ -52,10 +52,6 @@ let g:ycm_autoclose_preview_window_after_completion=1
 
 set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*
 
-" Keyboard Remaps
-:map <c-l> <Esc><CR>:w<CR>:!pdflatex %<CR><CR>
-:map <c-p> <Esc><CR>:w<CR>:!python %<CR>
-
 " Insert Mode Remaps
 "inoremap [[      [<Left>
 "inoremap ((      (<Left>
@@ -83,7 +79,7 @@ noremap <silent> <leader>vs <C-W>v<CR>:wincmd l<CR>:Files<CR>
 
 " Git remaps using vim-fugitive
 "nnoremap <silent> <leader>g :GFiles<CR>
-nnoremap <leader>g :Git
+nnoremap <leader>g :Git 
 nnoremap <silent> <leader>gs :Git status<CR>
 nnoremap <leader>gc :Git commit
 nnoremap <leader>gp :Git push origin
@@ -107,8 +103,10 @@ augroup file_detections
     autocmd!
     autocmd FileType text setlocal spell
     autocmd FileType tex setlocal spell
+    autocmd FileType tex nnoremap <leader>r :w<CR>:!pdflatex %<CR>
     autocmd FileType markdown setlocal spell
 
     autocmd FileType python nnoremap <leader>c I# <Esc> 
     autocmd FileType python nnoremap <leader>u ^2x <Esc> 
+    autocmd FileType tex nnoremap <leader>r :w<CR>:!python3 %<CR>
 augroup END
