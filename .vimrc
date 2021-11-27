@@ -103,10 +103,10 @@ augroup file_detections
     autocmd!
     autocmd FileType text setlocal spell
     autocmd FileType tex setlocal spell
-    autocmd FileType tex nnoremap <leader>r :w<CR>:!pdflatex %<CR>
+    autocmd FileType tex nnoremap <leader>r :w<CR>:!pdflatex %<CR><CR>
     autocmd FileType markdown setlocal spell
 
     autocmd FileType python nnoremap <leader>c I# <Esc> 
     autocmd FileType python nnoremap <leader>u ^2x <Esc> 
-    autocmd FileType tex nnoremap <leader>r :w<CR>:!python3 %<CR>
+    autocmd FileType python nnoremap <leader>r :w<CR>:!python3 %<CR><CR>
 augroup END
