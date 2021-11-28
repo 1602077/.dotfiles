@@ -7,7 +7,6 @@ set expandtab
 set history=50
 set incsearch
 set mouse=a
-"set nospell
 set number
 set rnu
 set shiftwidth=4
@@ -83,10 +82,9 @@ nnoremap <silent><leader>, :w<CR>:bprev<CR>
 nnoremap <silent><leader>. :w<CR>:bnext<CR>
 
 " Git remaps using vim-fugitive
-"nnoremap <silent> <leader>g :GFiles<CR>
 nnoremap <leader>g :Git 
 nnoremap <silent> <leader>gs :Git status<CR>
-nnoremap <leader>gc :Git commit
+nnoremap <leader>gc :Git commit -am ""<Left>
 nnoremap <leader>gp :Git push origin
 
 " Misc. remaps
