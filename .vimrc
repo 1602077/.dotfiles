@@ -79,8 +79,8 @@ nnoremap <silent><leader>k :wincmd k<CR>
 nnoremap <silent><leader>f :Files<CR>
 nnoremap <silent><leader>vs <C-W>v<CR>:wincmd l<CR>:Files<CR>
 
-nnoremap <silent><leader>, :bprev<CR>
-nnoremap <silent><leader>. :bnext<CR>
+nnoremap <silent><leader>, :w<CR>:bprev<CR>
+nnoremap <silent><leader>. :w<CR>:bnext<CR>
 
 " Git remaps using vim-fugitive
 "nnoremap <silent> <leader>g :GFiles<CR>
@@ -109,6 +109,8 @@ augroup file_detections
     autocmd FileType text setlocal spell
     autocmd FileType tex setlocal spell
     autocmd FileType tex nnoremap <leader>r :w<CR>:!pdflatex %<CR><CR>
+    autocmd FileType tex nnoremap <leader>c I% <Esc> 
+    autocmd FileType tex nnoremap <leader>u ^2x <Esc> 
     autocmd FileType markdown setlocal spell
 
     autocmd FileType python nnoremap <leader>c I# <Esc> 
