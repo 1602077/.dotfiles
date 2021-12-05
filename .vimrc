@@ -111,7 +111,10 @@ augroup file_detections
 
     autocmd FileType python nnoremap <leader>c I# <Esc> 
     autocmd FileType python nnoremap <leader>u ^2x <Esc> 
-    autocmd FileType python nnoremap <leader>r :w<CR>:!python3 %<CR><CR>
+    autocmd FileType python nnoremap <leader>r :w<CR>:!python3 %<CR>
 
-    autocmd FileType go  nnoremap <leader>r :w<CR>:!go run %<CR><CR>
+    autocmd FileType go  nnoremap <leader>r :w<CR>:!go run %<CR>
+    autocmd FileType go  nnoremap <leader>t :w<CR>:!go test %<CR>
+    autocmd FileType go  nnoremap <leader>c I// <Esc> 
+    autocmd FileType tex nnoremap <leader>u ^3x <Esc> 
 augroup END
