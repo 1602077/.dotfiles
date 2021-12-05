@@ -54,8 +54,6 @@ let g:ycm_autoclose_preview_window_after_completion=1
 set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*
 
 " Insert Mode Remaps
-"inoremap [[      [<Left>
-"inoremap ((      (<Left>
 inoremap ''      ''<Left>
 inoremap ""      ""<Left>
 inoremap {{      {}<Left>
@@ -84,8 +82,8 @@ nnoremap <silent><leader>. :w<CR>:bnext<CR>
 " Git remaps using vim-fugitive
 nnoremap <leader>g :Git 
 nnoremap <silent> <leader>gs :Git status<CR>
-nnoremap <leader>gc :Git commit -am ""<Left>
-nnoremap <leader>gp :Git push origin
+nnoremap <leader>gc :Git commit -am "
+nnoremap <leader>gp :Git push origin 
 
 " Misc. remaps
 nnoremap <leader>n :e %:h/
@@ -114,4 +112,6 @@ augroup file_detections
     autocmd FileType python nnoremap <leader>c I# <Esc> 
     autocmd FileType python nnoremap <leader>u ^2x <Esc> 
     autocmd FileType python nnoremap <leader>r :w<CR>:!python3 %<CR><CR>
+
+    autocmd FileType go  nnoremap <leader>r :w<CR>:!go run %<CR><CR>
 augroup END
