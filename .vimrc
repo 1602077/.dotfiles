@@ -49,7 +49,9 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_show_diagnostics_ui = 1
+let g:ycm_enable_diagnostic_signs = 0
 
 set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*
 
