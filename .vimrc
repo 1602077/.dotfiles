@@ -17,6 +17,8 @@ set spelllang=en_gb
 set splitbelow
 set tabstop=4
 set termwinsize=15x0
+set undofile
+set undodir=~/.vim/undodir
 set wrap
 
 " Plugin Installs
