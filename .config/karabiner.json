@@ -23,7 +23,7 @@
                                     "key_code": "return_or_enter",
                                     "modifiers": {
                                         "mandatory": [
-                                            "escape"
+                                            "left_command"
                                         ],
                                         "optional": [
                                             "caps_lock"
