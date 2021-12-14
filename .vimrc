@@ -54,6 +54,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_always_populate_location_list = 1
 
 set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*
 
@@ -82,6 +83,8 @@ nnoremap <silent><leader>vs <C-W>v<CR>:wincmd l<CR>:Files<CR>
 
 nnoremap <silent><leader>, :w<CR>:bprev<CR>
 nnoremap <silent><leader>. :w<CR>:bnext<CR>
+nnoremap <silent><leader>e :lne<CR>
+nnoremap <silent><leader>E :lprevious<CR>
 
 " Git remaps using vim-fugitive
 nnoremap <leader>g :Git 
