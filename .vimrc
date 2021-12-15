@@ -88,14 +88,16 @@ nnoremap <silent><leader>E :lprevious<CR>
 
 " Git remaps using vim-fugitive
 nnoremap <leader>g :Git 
-nnoremap <silent> <leader>gs :Git status<CR>
+nnoremap <silent><leader>gs :Git status<CR>
 nnoremap <leader>gc :Git commit -am "
 nnoremap <leader>gp :Git push origin 
 
 " Misc. remaps
 nnoremap <leader>n :e %:h/
-nnoremap <silent> <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <silent> <leader>w :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+nnoremap <silent><leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <silent><leader>w :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+" cd to wd of open buffer
+nnoremap <silent><leader>cd :lcd %:p:h<CR>
 
 " adjuting split bars
 set fillchars+=vert:\   
@@ -110,10 +112,12 @@ set directory^=$HOME/.vim/tmp//
 augroup file_detections
     autocmd!
     autocmd FileType text setlocal spell
+
     autocmd FileType tex setlocal spell
     autocmd FileType tex nnoremap <leader>r :w<CR>:!pdflatex %<CR><CR>
     autocmd FileType tex nnoremap <leader>c I% <Esc> 
     autocmd FileType tex nnoremap <leader>u ^2x <Esc> 
+
     autocmd FileType markdown setlocal spell
 
     autocmd FileType python nnoremap <leader>c I# <Esc> 
