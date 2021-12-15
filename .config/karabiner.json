@@ -114,7 +114,7 @@
                     },
                     "to": [
                         {
-                            "consumer_key_code": "dictation"
+                            "consumer_key_code": "illumination_decrement"
                         }
                     ]
                 },
@@ -124,7 +124,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "f6"
+                            "key_code": "illumination_increment"
                         }
                     ]
                 },
