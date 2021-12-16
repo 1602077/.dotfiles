@@ -91,6 +91,7 @@ nnoremap <leader>g :Git
 nnoremap <silent><leader>gs :Git status<CR>
 nnoremap <leader>gc :Git commit -am "
 nnoremap <leader>gp :Git push origin 
+nnoremap <leader>gP :Git push origin main<CR>
 
 " Misc. remaps
 nnoremap <leader>n :e %:h/
