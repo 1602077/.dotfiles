@@ -80,33 +80,40 @@ nnoremap <silent><leader>j :wincmd j<CR>
 nnoremap <silent><leader>k :wincmd k<CR>
 nnoremap <silent><leader>f :Files<CR>
 nnoremap <silent><leader>vs <C-W>v<CR>:wincmd l<CR>:Files<CR>
-
+" buffer movement
 nnoremap <silent><leader>, :w<CR>:bprev<CR>
 nnoremap <silent><leader>. :w<CR>:bnext<CR>
+" error jumping
 nnoremap <silent><leader>e :lne<CR>
 nnoremap <silent><leader>E :lprevious<CR>
 
 " Git remaps using vim-fugitive
-nnoremap <leader>g :Git 
+nnoremap <leader>g :Git
+
 nnoremap <silent><leader>gs :Git status<CR>
 nnoremap <leader>gc :Git commit -am "
-nnoremap <leader>gp :Git push origin 
+nnoremap <leader>gp :Git push origin
 nnoremap <leader>gP :Git push origin main<CR>
 
 " Misc. remaps
+nnoremap Y y$
+nnoremap n nzzzv
+nnoremap N Nzzzv
 nnoremap <leader>n :e %:h/
+nnoremap <leader>w :w<CR>
 nnoremap <silent><leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <silent><leader>w :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+nnoremap <silent><leader>W :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 " cd to wd of open buffer
 nnoremap <silent><leader>cd :lcd %:p:h<CR>
 
 " adjuting split bars
-set fillchars+=vert:\   
+set fillchars+=vert:\
 highlight VertSplit cterm=NONE
 highlight TabLineFill cterm=NONE
 highlight TabLine ctermbg=NONE
 
 " save vim swaps in external dir to wd
+"
 set directory^=$HOME/.vim/tmp//
 
 " autcmds
@@ -116,17 +123,16 @@ augroup file_detections
 
     autocmd FileType tex setlocal spell
     autocmd FileType tex nnoremap <leader>r :w<CR>:!pdflatex %<CR><CR>
-    autocmd FileType tex nnoremap <leader>c I% <Esc> 
-    autocmd FileType tex nnoremap <leader>u ^2x <Esc> 
+    autocmd FileType tex nnoremap <leader>c I% <Esc>
+    autocmd FileType tex nnoremap <leader>u ^2x<Esc>
 
     autocmd FileType markdown setlocal spell
 
-    autocmd FileType python nnoremap <leader>c I# <Esc> 
-    autocmd FileType python nnoremap <leader>u ^2x <Esc> 
+    autocmd FileType python nnoremap <leader>c I# <Esc>
+    autocmd FileType python nnoremap <leader>u ^2x<Esc>
     autocmd FileType python nnoremap <leader>r :w<CR>:!python3 %<CR>
 
     autocmd FileType go  nnoremap <leader>r :w<CR>:!go run %<CR>
-    autocmd FileType go  nnoremap <leader>t :w<CR>:!go test %<CR>
-    autocmd FileType go  nnoremap <leader>c I// <Esc> 
-    autocmd FileType go nnoremap <leader>u ^3x <Esc> 
+    autocmd FileType go  nnoremap <leader>c I// <Esc>
+    autocmd FileType go nnoremap <leader>u ^3x<Esc>
 augroup END
