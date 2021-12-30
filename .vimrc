@@ -93,7 +93,7 @@ nnoremap <silent><leader>E :lprevious<CR>
 
 " Git remaps using vim-fugitive
 nnoremap <leader>g :Git
-nnoremap <silent><leader>gs :Git status<CR>
+nnoremap <leader>gs :Git status<CR>
 nnoremap <leader>gc :Git commit -am "
 nnoremap <leader>gp :Git push origin
 nnoremap <leader>gP :Git push origin main<CR>
