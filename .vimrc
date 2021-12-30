@@ -17,18 +17,21 @@ set spelllang=en_gb
 set splitbelow
 set tabstop=4
 set termwinsize=15x0
+set undofile
+set undodir=~/.vim/undodir
 set wrap
 
 " Plugin Installs
-"execute pathogen#infect()
+execute pathogen#infect()
 
 call plug#begin('~/.vim/plugged')
 
-"Plug 'git@github.com:Valloric/YouCompleteMe.git'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'git@github.com:Valloric/YouCompleteMe.git'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
-"Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-fugitive'
@@ -49,13 +52,17 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_show_diagnostics_ui = 1
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_always_populate_location_list = 1
+
+let g:go_fmt_command = "goimports"
+let g:go_template_autocreate = 0
 
 set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*
 
 " Insert Mode Remaps
-"inoremap [[      [<Left>
-"inoremap ((      (<Left>
 inoremap ''      ''<Left>
 inoremap ""      ""<Left>
 inoremap {{      {}<Left>
@@ -77,20 +84,30 @@ nnoremap <silent><leader>j :wincmd j<CR>
 nnoremap <silent><leader>k :wincmd k<CR>
 nnoremap <silent><leader>f :Files<CR>
 nnoremap <silent><leader>vs <C-W>v<CR>:wincmd l<CR>:Files<CR>
-
+" buffer movement
 nnoremap <silent><leader>, :w<CR>:bprev<CR>
 nnoremap <silent><leader>. :w<CR>:bnext<CR>
+" error jumping
+nnoremap <silent><leader>e :lne<CR>
+nnoremap <silent><leader>E :lprevious<CR>
 
 " Git remaps using vim-fugitive
-nnoremap <leader>g :Git 
-nnoremap <silent> <leader>gs :Git status<CR>
-nnoremap <leader>gc :Git commit -am ""<Left>
+nnoremap <leader>g :Git
+nnoremap <leader>gs :Git status<CR>
+nnoremap <leader>gc :Git commit -am "
 nnoremap <leader>gp :Git push origin
+nnoremap <leader>gP :Git push origin main<CR>
 
 " Misc. remaps
+nnoremap Y y$
+nnoremap n nzzzv
+nnoremap N Nzzzv
 nnoremap <leader>n :e %:h/
-nnoremap <silent> <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <silent> <leader>w :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+nnoremap <leader>w :w<CR>
+nnoremap <silent><leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <silent><leader>W :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+" cd to wd of open buffer
+nnoremap <silent><leader>cd :lcd %:p:h<CR>
 
 " adjuting split bars
 set fillchars+=vert:\   
@@ -105,13 +122,19 @@ set directory^=$HOME/.vim/tmp//
 augroup file_detections
     autocmd!
     autocmd FileType text setlocal spell
+
     autocmd FileType tex setlocal spell
     autocmd FileType tex nnoremap <leader>r :w<CR>:!pdflatex %<CR><CR>
-    autocmd FileType tex nnoremap <leader>c I% <Esc> 
-    autocmd FileType tex nnoremap <leader>u ^2x <Esc> 
+    autocmd FileType tex nnoremap <leader>c I% <Esc>
+    autocmd FileType tex nnoremap <leader>u ^2x<Esc>
+
     autocmd FileType markdown setlocal spell
 
-    autocmd FileType python nnoremap <leader>c I# <Esc> 
-    autocmd FileType python nnoremap <leader>u ^2x <Esc> 
-    autocmd FileType python nnoremap <leader>r :w<CR>:!python3 %<CR><CR>
+    autocmd FileType python nnoremap <leader>c I# <Esc>
+    autocmd FileType python nnoremap <leader>u ^2x<Esc>
+    autocmd FileType python nnoremap <leader>r :w<CR>:!python3 %<CR>
+
+    autocmd FileType go nnoremap <leader>r :w<CR>:GoRun<CR>
+    autocmd FileType go nnoremap <leader>c I// <Esc>
+    autocmd FileType go nnoremap <leader>u ^3x<Esc>
 augroup END
