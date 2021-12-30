@@ -26,6 +26,7 @@ execute pathogen#infect()
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'git@github.com:Valloric/YouCompleteMe.git'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -55,6 +56,9 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_always_populate_location_list = 1
+
+let g:go_fmt_command = "goimports"
+let g:go_template_autocreate = 0
 
 set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*
 
@@ -89,7 +93,6 @@ nnoremap <silent><leader>E :lprevious<CR>
 
 " Git remaps using vim-fugitive
 nnoremap <leader>g :Git
-
 nnoremap <silent><leader>gs :Git status<CR>
 nnoremap <leader>gc :Git commit -am "
 nnoremap <leader>gp :Git push origin
@@ -107,13 +110,12 @@ nnoremap <silent><leader>W :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> 
 nnoremap <silent><leader>cd :lcd %:p:h<CR>
 
 " adjuting split bars
-set fillchars+=vert:\
+set fillchars+=vert:\   
 highlight VertSplit cterm=NONE
 highlight TabLineFill cterm=NONE
 highlight TabLine ctermbg=NONE
 
 " save vim swaps in external dir to wd
-"
 set directory^=$HOME/.vim/tmp//
 
 " autcmds
@@ -132,7 +134,7 @@ augroup file_detections
     autocmd FileType python nnoremap <leader>u ^2x<Esc>
     autocmd FileType python nnoremap <leader>r :w<CR>:!python3 %<CR>
 
-    autocmd FileType go  nnoremap <leader>r :w<CR>:!go run %<CR>
-    autocmd FileType go  nnoremap <leader>c I// <Esc>
+    autocmd FileType go nnoremap <leader>r :w<CR>:GoRun<CR>
+    autocmd FileType go nnoremap <leader>c I// <Esc>
     autocmd FileType go nnoremap <leader>u ^3x<Esc>
 augroup END
