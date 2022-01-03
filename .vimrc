@@ -128,6 +128,7 @@ nnoremap <leader>gs :Git status<CR>
 nnoremap <leader>gc :Git commit -am "
 nnoremap <leader>gp :Git push origin
 nnoremap <leader>gP :Git push origin main<CR>
+nnoremap <leader>gf :GFiles<CR>
 
 " nerdtree
 let NERDTreeMinimalUI=1
@@ -147,7 +148,7 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_enable_diagnostic_signs = 0
-let g:ycm_always_populate_location_list = 1
+let g:ycm_always_populate_location_list = 0
 nnoremap <silent><leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " vim-go
