@@ -55,6 +55,7 @@ augroup file_detections
     " autocmd FileType go nnoremap <leader>r :w<CR>:!go run %<CR>
     autocmd FileType go nnoremap <leader>r :w<CR>:GoRun<CR>
     autocmd FileType go nnoremap <leader>T :w<CR>:GoTest<CR>
+    autocmd FileType go nnoremap <leader>Tv :w<CR>:!go test -v<CR>
     autocmd FileType go nnoremap <leader>c I// <Esc>
     autocmd FileType go nnoremap <leader>u ^3x<Esc>
 augroup END
@@ -129,6 +130,7 @@ nnoremap <leader>gc :Git commit -am "
 nnoremap <leader>gp :Git push origin
 nnoremap <leader>gP :Git push origin main<CR>
 nnoremap <leader>gf :GFiles<CR>
+nnoremap <leader>gd :Git diff<CR>
 
 " nerdtree
 let NERDTreeMinimalUI=1
