@@ -54,8 +54,8 @@ augroup file_detections
 
     " autocmd FileType go nnoremap <leader>r :w<CR>:!go run %<CR>
     autocmd FileType go nnoremap <leader>r :w<CR>:GoRun<CR>
-    autocmd FileType go nnoremap <leader>T :w<CR>:GoTest<CR>
-    autocmd FileType go nnoremap <leader>Tv :w<CR>:!go test -v<CR>
+    autocmd FileType go nnoremap <leader>t :w<CR>:GoTest<CR>
+    autocmd FileType go nnoremap <leader>tv :w<CR>:!go test -v<CR>
     autocmd FileType go nnoremap <leader>c I// <Esc>
     autocmd FileType go nnoremap <leader>u ^3x<Esc>
 augroup END
@@ -85,7 +85,8 @@ nnoremap <silent><leader>l :wincmd l<CR>
 nnoremap <silent><leader>j :wincmd j<CR>
 nnoremap <silent><leader>k :wincmd k<CR>
 nnoremap <silent><leader>f :Files<CR>
-nnoremap <silent><leader>vs <C-W>v<CR>:wincmd l<CR>:Files<CR>
+nnoremap <silent><leader>sv <C-W>v<CR>:wincmd l<CR>:Files<CR>
+nnoremap <silent><leader>sh :sp<CR>:Files<CR>
 
 " buffer movement & cd to wd of open buff
 nnoremap <silent><leader>, :w<CR>:bprev<CR>
