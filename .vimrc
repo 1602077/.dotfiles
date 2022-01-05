@@ -43,21 +43,22 @@ augroup file_detections
 
     autocmd FileType tex setlocal spell
     autocmd FileType tex nnoremap <leader>r :w<CR>:!pdflatex %<CR><CR>
-    autocmd FileType tex nnoremap <leader>c I% <Esc>
-    autocmd FileType tex nnoremap <leader>u ^2x<Esc>
 
     autocmd FileType markdown setlocal spell
 
-    autocmd FileType python nnoremap <leader>c I# <Esc>
-    autocmd FileType python nnoremap <leader>u ^2x<Esc>
     autocmd FileType python nnoremap <leader>r :w<CR>:!python3 %<CR>
 
-    " autocmd FileType go nnoremap <leader>r :w<CR>:!go run %<CR>
     autocmd FileType go nnoremap <leader>r :w<CR>:GoRun<CR>
     autocmd FileType go nnoremap <leader>t :w<CR>:GoTest<CR>
     autocmd FileType go nnoremap <leader>tv :w<CR>:!go test -v<CR>
-    autocmd FileType go nnoremap <leader>c I// <Esc>
-    autocmd FileType go nnoremap <leader>u ^3x<Esc>
+
+    " comment remaps:  now using vim-commentary instead
+    "autocmd FileType python nnoremap <leader>c I# <Esc>
+    "autocmd FileType python nnoremap <leader>u ^2x<Esc>
+    "autocmd FileType tex nnoremap <leader>c I% <Esc>
+    "autocmd FileType tex nnoremap <leader>u ^2x<Esc>
+    "autocmd FileType go nnoremap <leader>c I// <Esc>
+    "autocmd FileType go nnoremap <leader>u ^3x<Esc>
 augroup END
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -96,7 +97,7 @@ nnoremap <silent><leader>cd :lcd %:p:h<CR>
 " error jumping
 nnoremap <silent><leader>e :lne<CR>
 nnoremap <silent><leader>E :lprevious<CR>
-"
+
 " miscellanous
 nnoremap Y y$
 nnoremap n nzzzv
@@ -108,6 +109,8 @@ nnoremap <silent><leader>W :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin install, config & remappings
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype plugin indent on
+
 call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'git@github.com:Valloric/YouCompleteMe.git'
@@ -122,16 +125,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
+" installs tpope's surrond & commentary
 execute pathogen#infect()
-
-" vim-fugitive
-nnoremap <leader>g :Git
-nnoremap <leader>gs :Git status<CR>
-nnoremap <leader>gc :Git commit -am "
-nnoremap <leader>gp :Git push origin
-nnoremap <leader>gP :Git push origin main<CR>
-nnoremap <leader>gf :GFiles<CR>
-nnoremap <leader>gd :Git diff<CR>
 
 " nerdtree
 let NERDTreeMinimalUI=1
@@ -146,6 +141,23 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+" vim-commentary
+nnoremap <silent><leader>/ :Commentary<CR>
+vnoremap <silent><leader>/ :Commentary<CR>
+
+" vim-fugitive
+nnoremap <leader>g :Git 
+nnoremap <leader>gs :Git status<CR>
+nnoremap <leader>gc :Git commit -am "
+nnoremap <leader>gp :Git push origin
+nnoremap <leader>gP :Git push origin main<CR>
+nnoremap <leader>gf :GFiles<CR>
+nnoremap <leader>gd :Git diff<CR>
+
+" vim-go
+let g:go_fmt_command = "goimports"
+let g:go_template_autocreate = 0
+
 " you complete me
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -153,8 +165,3 @@ let g:ycm_show_diagnostics_ui = 1
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_always_populate_location_list = 0
 nnoremap <silent><leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-" vim-go
-let g:go_fmt_command = "goimports"
-let g:go_template_autocreate = 0
-
