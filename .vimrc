@@ -85,7 +85,6 @@ nnoremap <silent><leader>h :wincmd h<CR>
 nnoremap <silent><leader>l :wincmd l<CR>
 nnoremap <silent><leader>j :wincmd j<CR>
 nnoremap <silent><leader>k :wincmd k<CR>
-nnoremap <silent><leader>f :Files<CR>
 nnoremap <silent><leader>sv <C-W>v<CR>:wincmd l<CR>:Files<CR>
 nnoremap <silent><leader>sh :sp<CR>:Files<CR>
 
@@ -151,8 +150,14 @@ nnoremap <leader>gs :Git status<CR>
 nnoremap <leader>gc :Git commit -am "
 nnoremap <leader>gp :Git push origin
 nnoremap <leader>gP :Git push origin main<CR>
-nnoremap <leader>gf :GFiles<CR>
 nnoremap <leader>gd :Git diff<CR>
+" dynamic switch fzf
+silent! !git rev-parse --git-dir > /dev/null 2>&1
+if v:shell_error == 0
+    nnoremap <silent><leader>f :GFiles<CR>
+else
+    nnoremap <silent><leader>f :Files<CR>
+endif
 
 " vim-go
 let g:go_fmt_command = "goimports"
