@@ -80,7 +80,7 @@ inoremap {;<CR>  {<CR>};<Esc>O
 let mapleader = " "
 
 " window management
-nnoremap <silent><leader>t :term<CR>
+nnoremap <silent><leader>T :term<CR>
 nnoremap <silent><leader>h :wincmd h<CR>
 nnoremap <silent><leader>l :wincmd l<CR>
 nnoremap <silent><leader>j :wincmd j<CR>
@@ -151,13 +151,7 @@ nnoremap <leader>gc :Git commit -am "
 nnoremap <leader>gp :Git push origin
 nnoremap <leader>gP :Git push origin main<CR>
 nnoremap <leader>gd :Git diff<CR>
-" dynamic switch fzf
-silent! !git rev-parse --git-dir > /dev/null 2>&1
-if v:shell_error == 0
-    nnoremap <silent><leader>f :GFiles<CR>
-else
-    nnoremap <silent><leader>f :Files<CR>
-endif
+nnoremap <expr> <leader>f fugitive#head() != '' ? ':GFiles<CR>' : ':Files<CR>'
 
 " vim-go
 let g:go_fmt_command = "goimports"
