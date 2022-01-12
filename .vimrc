@@ -162,6 +162,8 @@ highlight GitGutterChange guifg=#bbbb00 ctermfg=214
 highlight GitGutterDelete guifg=#ff2222 ctermfg=52
 let g:gitgutter_sign_removed = '-'
 let g:gitgutter_map_keys = 0
+nnoremap ]g :GitGutterNextHunk<CR>
+nnoremap [g :GitGutterPrevHunk<CR>
 nnoremap <leader>gt :GitGutterToggle<CR>
 
 " vim-go
