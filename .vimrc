@@ -111,6 +111,7 @@ nnoremap <silent><leader>W :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> 
 filetype plugin indent on
 
 call plug#begin('~/.vim/plugged')
+Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'git@github.com:Valloric/YouCompleteMe.git'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -152,6 +153,16 @@ nnoremap <leader>gp :Git push origin
 nnoremap <leader>gP :Git push origin main<CR>
 nnoremap <leader>gd :Git diff<CR>
 nnoremap <expr> <leader>f fugitive#head() != '' ? ':GFiles<CR>' : ':Files<CR>'
+
+" vim-gitgutter
+set signcolumn=number
+highlight! link SignColumn LineNr
+highlight GitGutterAdd    guifg=#009900 ctermfg=70
+highlight GitGutterChange guifg=#bbbb00 ctermfg=214
+highlight GitGutterDelete guifg=#ff2222 ctermfg=52
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_map_keys = 0
+nnoremap <leader>gt :GitGutterToggle<CR>
 
 " vim-go
 let g:go_fmt_command = "goimports"
