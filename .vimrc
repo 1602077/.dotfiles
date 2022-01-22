@@ -2,12 +2,12 @@
 " .vimrc
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
-colorscheme slate
+" colorscheme slate
 
 set autoread
 set background=dark
 set bs=indent,eol,start
-set directory^=$HOME/.vim/tmp//
+set directory^=$HOME/.vim/tmp/
 set encoding=UTF-8
 set expandtab
 set history=50
@@ -15,7 +15,10 @@ set incsearch
 set mouse=a
 set number
 set rnu
+set noerrorbells
+set ignorecase
 set shiftwidth=4
+set scrolloff=8
 set smartcase
 set smartindent
 set softtabstop=4
@@ -61,6 +64,7 @@ augroup file_detections
     "autocmd FileType go nnoremap <leader>u ^3x<Esc>
 augroup END
 
+au! BufWritePost $MYVIMRC source %
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Insert mode remaps
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -118,21 +122,27 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
-Plug 'sheerun/vim-polyglot'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+Plug 'gruvbox-community/gruvbox'
 call plug#end()
+
+" gruvbox
+colorscheme gruvbox
+highlight Normal ctermbg=NONE
 
 " installs tpope's surrond & commentary
 execute pathogen#infect()
 
 " nerdtree
-let NERDTreeMinimalUI=1
-let NERDTreeRespectWildIgnore=1
-let NERDTreeShowHidden=1
+let g:NERDTreeMinimalUI=1
+let g:NERDTreeRespectWildIgnore=1
+let g:NERDTreeShowHidden=1
 let g:webdevicons_enable_nerdtree = 1
+let g:NERDTreeQuitOnOpen=1
 nnoremap <silent><leader>F :NERDTreeToggle<CR>
 
 " vim-airline

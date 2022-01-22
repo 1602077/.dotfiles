@@ -33,3 +33,5 @@ unset __conda_setup
 alias condax86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/condabin/conda"
 alias pipx86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/envs/pytorch_x86/bin/python -m pip"
 alias pythonx86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/envs/pytorch_x86/bin/python"
+
+# source /tmp/zsh-autocomplete/zsh-autocomplete.plugin.zsh
