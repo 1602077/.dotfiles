@@ -96,6 +96,7 @@ nnoremap <silent><leader>sh :sp<CR>:Files<CR>
 nnoremap <silent><leader>, :w<CR>:bprev<CR>
 nnoremap <silent><leader>. :w<CR>:bnext<CR>
 nnoremap <silent><leader>cd :lcd %:p:h<CR>
+nnoremap <silent><leader>q :bd<CR>
 
 " error jumping
 nnoremap <silent><leader>e :lne<CR>
@@ -118,6 +119,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'git@github.com:Valloric/YouCompleteMe.git'
+Plug 'gruvbox-community/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
@@ -126,8 +128,6 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-Plug 'gruvbox-community/gruvbox'
 call plug#end()
 
 " gruvbox
