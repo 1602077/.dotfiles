@@ -54,6 +54,7 @@ augroup file_detections
     autocmd FileType go nnoremap <leader>r :w<CR>:GoRun<CR>
     autocmd FileType go nnoremap <leader>t :w<CR>:GoTest<CR>
     autocmd FileType go nnoremap <leader>tv :w<CR>:!go test -v<CR>
+    autocmd FileType go nnoremap <leader>tb :w<CR>:!go test -bench=.<CR>
 
     " comment remaps:  now using vim-commentary instead
     "autocmd FileType python nnoremap <leader>c I# <Esc>
