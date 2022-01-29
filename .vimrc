@@ -51,10 +51,12 @@ augroup file_detections
 
     autocmd FileType python nnoremap <leader>r :w<CR>:!python3 %<CR>
 
+    autocmd FileType go nnoremap <leader>b :w<CR>:!go build .<CR>
     autocmd FileType go nnoremap <leader>r :w<CR>:GoRun<CR>
     autocmd FileType go nnoremap <leader>t :w<CR>:GoTest<CR>
     autocmd FileType go nnoremap <leader>tv :w<CR>:!go test -v<CR>
     autocmd FileType go nnoremap <leader>tb :w<CR>:!go test -bench=.<CR>
+    autocmd FileType go nnoremap <leader>td :vimgrep /TODO/g **/*.go<CR>
 
     " comment remaps:  now using vim-commentary instead
     "autocmd FileType python nnoremap <leader>c I# <Esc>
@@ -98,6 +100,7 @@ nnoremap <silent><leader>, :w<CR>:bprev<CR>
 nnoremap <silent><leader>. :w<CR>:bnext<CR>
 nnoremap <silent><leader>cd :lcd %:p:h<CR>
 nnoremap <silent><leader>q :bd<CR>
+nnoremap <silent><leader>B :Buffers<CR>
 
 " error jumping
 nnoremap <silent><leader>e :lne<CR>
@@ -110,6 +113,8 @@ nnoremap N Nzzzv
 nnoremap <leader>n :e %:h/
 nnoremap <leader>w :w<CR>
 nnoremap <silent><leader>W :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin install, config & remappings
@@ -151,6 +156,11 @@ let g:airline_theme='minimalist'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:ariline#extensions#tabline#buffer_idx_mode=1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
 
 " vim-commentary
 nnoremap <silent><leader>/ :Commentary<CR>

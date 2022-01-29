@@ -35,3 +35,7 @@ alias pipx86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/envs/pytorch_x86/bin
 alias pythonx86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/envs/pytorch_x86/bin/python"
 
 # source /tmp/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+GOPATH=/Users/jcmunday/Documents/computing/go
+export GOPATH
+PATH=$PATH:$GOPATH/bin # Add GOPATH/bin to PATH for scripting
+export GO111MODULE=on
