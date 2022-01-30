@@ -92,9 +92,8 @@ nnoremap <silent><leader>h :wincmd h<CR>
 nnoremap <silent><leader>l :wincmd l<CR>
 nnoremap <silent><leader>j :wincmd j<CR>
 nnoremap <silent><leader>k :wincmd k<CR>
-nnoremap <silent><leader>sv <C-W>v<CR>:wincmd l<CR>:Files<CR>
-nnoremap <silent><leader>sh :sp<CR>:Files<CR>
-
+nmap <silent><leader>sv <C-W>v<CR>:wincmd l<CR><leader>f
+nmap <silent><leader>sh :sp<CR><leader>f
 " buffer movement & cd to wd of open buff
 nnoremap <silent><leader>, :w<CR>:bprev<CR>
 nnoremap <silent><leader>. :w<CR>:bnext<CR>
@@ -173,7 +172,7 @@ nnoremap <leader>gc :Git commit -am "
 nnoremap <leader>gp :Git push origin
 nnoremap <leader>gP :Git push origin main<CR>
 nnoremap <leader>gd :Git diff<CR>
-nnoremap <expr> <leader>f fugitive#head() != '' ? ':GFiles<CR>' : ':Files<CR>'
+nnoremap <expr><leader>f fugitive#head() != '' ? ':GFiles<CR>' : ':Files<CR>'
 
 " vim-gitgutter
 set signcolumn=number
