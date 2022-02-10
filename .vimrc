@@ -128,8 +128,8 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
-Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'ryanoasis/vim-devicons'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -146,7 +146,7 @@ execute pathogen#infect()
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeRespectWildIgnore=1
 let g:NERDTreeShowHidden=1
-let g:webdevicons_enable_nerdtree = 1
+" let g:webdevicons_enable_nerdtree = 1
 let g:NERDTreeQuitOnOpen=1
 nnoremap <silent><leader>F :NERDTreeToggle<CR>
 
@@ -157,6 +157,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:ariline#extensions#tabline#buffer_idx_mode=1
 let g:airline_detect_spelllang=0
+let g:airline#extensions#tabline#buffers_label = ''
 
 let g:airline_left_sep=''
 let g:airline_right_sep=''
@@ -169,6 +170,12 @@ nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
 nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>10 <Plug>AirlineSelectTab10
 nnoremap <leader>A :AirlineToggle<CR>
 
 " vim-commentary
