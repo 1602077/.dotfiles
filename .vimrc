@@ -2,7 +2,6 @@
 " .vimrc
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
-" colorscheme slate
 
 set autoread
 set background=dark
@@ -54,17 +53,10 @@ augroup file_detections
     autocmd FileType go nnoremap <leader>b :w<CR>:!go build .<CR>
     autocmd FileType go nnoremap <leader>r :w<CR>:GoRun<CR>
     autocmd FileType go nnoremap <leader>t :w<CR>:GoTest<CR>
+    autocmd FileType go nnoremap <leader>tt :w<CR>:!go test ./...<CR>
     autocmd FileType go nnoremap <leader>tv :w<CR>:!go test -v<CR>
     autocmd FileType go nnoremap <leader>tb :w<CR>:!go test -bench=.<CR>
     autocmd FileType go nnoremap <leader>td :vimgrep /TODO/g **/*.go<CR>
-
-    " comment remaps:  now using vim-commentary instead
-    "autocmd FileType python nnoremap <leader>c I# <Esc>
-    "autocmd FileType python nnoremap <leader>u ^2x<Esc>
-    "autocmd FileType tex nnoremap <leader>c I% <Esc>
-    "autocmd FileType tex nnoremap <leader>u ^2x<Esc>
-    "autocmd FileType go nnoremap <leader>c I// <Esc>
-    "autocmd FileType go nnoremap <leader>u ^3x<Esc>
 augroup END
 
 au! BufWritePost $MYVIMRC source %
@@ -94,7 +86,6 @@ nnoremap <silent><leader>j :wincmd j<CR>
 nnoremap <silent><leader>k :wincmd k<CR>
 nmap <silent><leader>sv <C-W>v<CR>:wincmd l<CR><leader>f
 nmap <silent><leader>sh :sp<CR><leader>f
-" buffer movement & cd to wd of open buff
 nnoremap <silent><leader>, :w<CR>:bprev<CR>
 nnoremap <silent><leader>. :w<CR>:bnext<CR>
 nnoremap <silent><leader>cd :lcd %:p:h<CR>
@@ -135,12 +126,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
+" installs tpope's surrond & commentary
+execute pathogen#infect()
+
 " gruvbox
 colorscheme gruvbox
 highlight Normal ctermbg=NONE
-
-" installs tpope's surrond & commentary
-execute pathogen#infect()
 
 " nerdtree
 let g:NERDTreeMinimalUI=1

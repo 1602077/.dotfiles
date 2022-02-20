@@ -16,14 +16,14 @@
                 },
                 "rules": [
                     {
-                        "description": "Open  terminal",
+                        "description": "Open terminal",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "return_or_enter",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command"
+                                            "left_control"
                                         ],
                                         "optional": [
                                             "caps_lock"
