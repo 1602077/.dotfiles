@@ -36,6 +36,7 @@ highlight VertSplit cterm=NONE
 highlight TabLineFill cterm=NONE
 highlight TabLine ctermbg=NONE
 
+
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File detection
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -55,11 +56,9 @@ augroup file_detections
     autocmd FileType go nnoremap <leader>t :w<CR>:GoTest<CR>
     autocmd FileType go nnoremap <leader>tt :w<CR>:!go test ./...<CR>
     autocmd FileType go nnoremap <leader>tv :w<CR>:!go test -v<CR>
-    autocmd FileType go nnoremap <leader>tb :w<CR>:!go test -bench=.<CR>
     autocmd FileType go nnoremap <leader>td :vimgrep /TODO/g **/*.go<CR>
 augroup END
 
-au! BufWritePost $MYVIMRC source %
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Insert mode remaps
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -102,9 +101,11 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <leader>n :e %:h/
 nnoremap <leader>w :w<CR>
-nnoremap <silent><leader>W :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+" clear white space & toggle colour column
+nnoremap <silent><leader>W :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+nnoremap <leader>cc :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin install, config & remappings
@@ -119,8 +120,6 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
-" Plug 'ryanoasis/vim-devicons'
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -137,7 +136,6 @@ highlight Normal ctermbg=NONE
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeRespectWildIgnore=1
 let g:NERDTreeShowHidden=1
-" let g:webdevicons_enable_nerdtree = 1
 let g:NERDTreeQuitOnOpen=1
 nnoremap <silent><leader>F :NERDTreeToggle<CR>
 
@@ -149,7 +147,6 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:ariline#extensions#tabline#buffer_idx_mode=1
 let g:airline_detect_spelllang=0
 let g:airline#extensions#tabline#buffers_label = ''
-
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_left_alt_sep=''
@@ -161,12 +158,6 @@ nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
 nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
-nmap <leader>10 <Plug>AirlineSelectTab10
 nnoremap <leader>A :AirlineToggle<CR>
 
 " vim-commentary
