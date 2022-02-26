@@ -36,29 +36,6 @@ highlight VertSplit cterm=NONE
 highlight TabLineFill cterm=NONE
 highlight TabLine ctermbg=NONE
 
-
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" File detection
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup file_detections
-    autocmd!
-    autocmd FileType text setlocal spell
-
-    autocmd FileType tex setlocal spell
-    autocmd FileType tex nnoremap <leader>r :w<CR>:!pdflatex %<CR><CR>
-
-    autocmd FileType markdown setlocal spell
-
-    autocmd FileType python nnoremap <leader>r :w<CR>:!python3 %<CR>
-
-    autocmd FileType go nnoremap <leader>b :w<CR>:!go build .<CR>
-    autocmd FileType go nnoremap <leader>r :w<CR>:GoRun<CR>
-    autocmd FileType go nnoremap <leader>t :w<CR>:GoTest<CR>
-    autocmd FileType go nnoremap <leader>tt :w<CR>:!go test ./...<CR>
-    autocmd FileType go nnoremap <leader>tv :w<CR>:!go test -v<CR>
-    autocmd FileType go nnoremap <leader>td :vimgrep /TODO/g **/*.go<CR>
-augroup END
-
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Insert mode remaps
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -120,6 +97,7 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
+Plug 'psf/black', { 'branch': 'stable' }
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -196,3 +174,26 @@ let g:ycm_show_diagnostics_ui = 1
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_always_populate_location_list = 0
 nnoremap <silent><leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" File detection
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup file_detections
+    autocmd!
+    autocmd FileType text setlocal spell
+
+    autocmd FileType tex setlocal spell
+    autocmd FileType tex nnoremap <leader>r :w<CR>:!pdflatex %<CR><CR>
+
+    autocmd FileType markdown setlocal spell
+
+    autocmd FileType python nnoremap <leader>r :w<CR>:!python3 %<CR>
+    autocmd BufWritePre *.py execute ':Black'
+
+    autocmd FileType go nnoremap <leader>b :w<CR>:!go build .<CR>
+    autocmd FileType go nnoremap <leader>r :w<CR>:GoRun<CR>
+    autocmd FileType go nnoremap <leader>t :w<CR>:GoTest<CR>
+    autocmd FileType go nnoremap <leader>tt :w<CR>:!go test ./...<CR>
+    autocmd FileType go nnoremap <leader>tv :w<CR>:!go test -v<CR>
+    autocmd FileType go nnoremap <leader>td :vimgrep /TODO/g **/*.go<CR>
+augroup END
