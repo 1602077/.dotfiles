@@ -68,6 +68,9 @@ nnoremap <silent><leader>cd :lcd %:p:h<CR>
 nnoremap <silent><leader>q :bd<CR>
 nnoremap <silent><leader>B :Buffers<CR>
 
+nnoremap <silent>l. :lnext<CR>
+nnoremap <silent>l, :lprev<CR>
+
 " error jumping
 nnoremap <silent><leader>e :lne<CR>
 nnoremap <silent><leader>E :lprevious<CR>
@@ -101,6 +104,8 @@ Plug 'psf/black', { 'branch': 'stable' }
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
 call plug#end()
 
 " installs tpope's surrond & commentary
@@ -167,6 +172,11 @@ nnoremap <leader>gt :GitGutterToggle<CR>
 let g:go_fmt_command = "goimports"
 let g:go_template_autocreate = 0
 
+" vim-snippets
+let g:UltiSnipsExpandTrigger="<c-s>"
+" let g:UltiSnipsJumpForwardTrigger="<c-.>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-,>"
+
 " you complete me
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -196,4 +206,5 @@ augroup file_detections
     autocmd FileType go nnoremap <leader>tt :w<CR>:!go test ./...<CR>
     autocmd FileType go nnoremap <leader>tv :w<CR>:!go test -v<CR>
     autocmd FileType go nnoremap <leader>td :vimgrep /TODO/g **/*.go<CR>
+    autocmd FileType go nnoremap <leader>R :GoReferrers<CR>
 augroup END
