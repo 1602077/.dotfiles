@@ -9,7 +9,21 @@ PROMPT='%F{39}%2~%f${vcs_info_msg_0_} '
 
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND="find ."
+export FZF_DEFAULT_COMMAND="find . -f"
+export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border'
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf "$@" --preview 'tree -C {} | head -200' ;;
+    ssh)          fzf "$@" --preview 'dig {}' ;;
+    vim)          fzf "$@" --preview 'bat --color=always --style=numbers --line-range :300 {} | head -200' --preview-window=down,40% ;;
+    *)            fzf "$@" ;;
+  esac
+}
+export BAT_THEME="gruvbox-dark"
+export BAT_STYLE="numbers,changes"
 
 # custom commands
 source ~/.myCommands.sh
