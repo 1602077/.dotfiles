@@ -174,8 +174,10 @@ let g:go_template_autocreate = 0
 
 " vim-snippets
 let g:UltiSnipsExpandTrigger="<c-s>"
-" let g:UltiSnipsJumpForwardTrigger="<c-.>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-,>"
+let g:UltiSnipsJumpForwardTrigger="<c-n>"
+let g:UltiSnipsJumpBackwardTrigger="<c-p>"
+
+let g:snips_author="jcmunday"
 
 " you complete me
 let g:ycm_autoclose_preview_window_after_completion = 1

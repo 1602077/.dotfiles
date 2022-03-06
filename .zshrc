@@ -39,6 +39,12 @@ alias condax86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/condabin/conda"
 alias pipx86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/envs/pytorch_x86/bin/python -m pip"
 alias pythonx86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/envs/pytorch_x86/bin/python"
 
+# named directories
+hash -d personal=/Users/jcmunday/Documents/personal/
+hash -d books=/Users/jcmunday/Documents/computing/books
+hash -d go=/Users/jcmunday/Documents/computing/go/src/
+
+# go
 GOPATH=/Users/jcmunday/Documents/computing/go
 export GOPATH
 PATH=$PATH:$GOPATH/bin # Add GOPATH/bin to PATH for scripting
