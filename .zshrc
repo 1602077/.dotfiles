@@ -57,6 +57,7 @@ alias pythonx86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/envs/pytorch_x86/
 hash -d personal=/Users/jcmunday/Documents/personal/
 hash -d books=/Users/jcmunday/Documents/computing/books
 hash -d go=/Users/jcmunday/Documents/computing/go/src/
+hash -d src=/Users/jcmunday/Documents/computing/
 
 # go
 GOPATH=/Users/jcmunday/Documents/computing/go
