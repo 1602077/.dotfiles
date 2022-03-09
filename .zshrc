@@ -7,6 +7,9 @@ zstyle ':vcs_info:git:*' formats ':%F{70}%b%f'
 setopt PROMPT_SUBST
 PROMPT='%F{39}%2~%f${vcs_info_msg_0_} '
 
+# zsh-completions
+autoload -Uz compinit && compinit
+
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="find . -f"
@@ -48,6 +51,7 @@ alias ll="ls -al"
 alias gs="git status"
 alias gc="git commit -m"
 alias gca="git commit -am"
+alias k="minikube kubectl --"
 # rosetta x86 equivalent commands
 alias condax86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/condabin/conda"
 alias pipx86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/envs/pytorch_x86/bin/python -m pip"
@@ -64,3 +68,9 @@ GOPATH=/Users/jcmunday/Documents/computing/go
 export GOPATH
 PATH=$PATH:$GOPATH/bin # Add GOPATH/bin to PATH for scripting
 export GO111MODULE=on
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jcmunday/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jcmunday/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jcmunday/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jcmunday/google-cloud-sdk/completion.zsh.inc'; fi
