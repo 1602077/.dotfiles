@@ -12,7 +12,7 @@ autoload -Uz compinit && compinit
 
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND="find . -f"
+export FZF_DEFAULT_COMMAND="find ."
 export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border'
 _fzf_comprun() {
   local command=$1
@@ -68,9 +68,3 @@ GOPATH=/Users/jcmunday/Documents/computing/go
 export GOPATH
 PATH=$PATH:$GOPATH/bin # Add GOPATH/bin to PATH for scripting
 export GO111MODULE=on
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/jcmunday/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jcmunday/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/jcmunday/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jcmunday/google-cloud-sdk/completion.zsh.inc'; fi

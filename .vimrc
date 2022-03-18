@@ -39,8 +39,8 @@ highlight TabLine ctermbg=NONE
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Insert mode remaps
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-inoremap ''      ''<Left>
-inoremap ""      ""<Left>
+" inoremap ''      ''<Left>
+" inoremap ""      ""<Left>
 inoremap {{      {}<Left>
 inoremap ((      ()<Left>
 inoremap [[      []<Left>
