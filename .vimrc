@@ -39,8 +39,6 @@ highlight TabLine ctermbg=NONE
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Insert mode remaps
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" inoremap ''      ''<Left>
-" inoremap ""      ""<Left>
 inoremap {{      {}<Left>
 inoremap ((      ()<Left>
 inoremap [[      []<Left>
@@ -101,15 +99,14 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'psf/black', { 'branch': 'stable' }
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 call plug#end()
-
-" installs tpope's surrond & commentary
-execute pathogen#infect()
 
 " gruvbox
 colorscheme gruvbox
