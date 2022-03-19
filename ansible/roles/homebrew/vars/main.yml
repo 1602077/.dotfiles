@@ -1,0 +1,23 @@
+---
+homebrew_apps:
+  - vim
+  - tmux
+  - fzf
+  - git
+  - wget
+  - tree
+  - ripgrep
+  - python
+  - go
+  - cmake
+  - nodejs
+
+homebrew_casks:
+  - stats
+  - rectangle
+  - font-hack-nerd-font
+  - karabiner-elements
+  - selfcontrol
+  - opera
+  # - docker
+  # - pgadmin4
