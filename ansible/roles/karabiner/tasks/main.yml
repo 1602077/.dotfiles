@@ -20,3 +20,7 @@
     src : "~/.dotfiles/karabiner.json"
     dest: "~/.config/karabiner/karabiner.json"
     state: link
+
+- name: restart karabiner
+  command: launchctl stop org.pqrs.karabiner.karabiner_console_user_server
+  command: launchctl start  org.pqrs.karabiner.karabiner_console_user_server
