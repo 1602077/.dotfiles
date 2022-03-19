@@ -1,0 +1,16 @@
+---
+- name: check miniforge is installed
+  stat:
+    path: "~/miniforge3"
+  register: "is_miniforge_installed"
+
+- name: download miniforge installer
+  shell: curl -fsSLo Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-$(uname -m).sh"
+  when: not is_miniforge_installed.stat.exists
+
+- name: run installer
+  command: zsh Miniforge3.sh -b && rm Miniforge3.sh
+  when: not is_miniforge_installed.stat.exists
+
+- name: disbale auto-activation of base env
+  command: conda config --set auto_activate_base false

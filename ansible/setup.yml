@@ -3,5 +3,6 @@
   roles:
     # - homebrew
     # - vim
-    - terminal
-    - karabiner
+    # - terminal
+    # - karabiner
+    - miniforge

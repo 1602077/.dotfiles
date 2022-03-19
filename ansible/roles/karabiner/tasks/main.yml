@@ -21,8 +21,5 @@
     dest: "~/.config/karabiner/karabiner.json"
     state: link
 
-- name: kill karabiner
-  command: sudo kill -9 $(pgrep "arabiner")
-
 - name: open karabiner
   command: open /Applications/Karabiner-Elements.app
