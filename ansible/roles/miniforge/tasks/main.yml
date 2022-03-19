@@ -9,7 +9,11 @@
   when: not is_miniforge_installed.stat.exists
 
 - name: run installer
-  command: zsh Miniforge3.sh -b && rm Miniforge3.sh
+  command: zsh Miniforge3.sh -b
+  when: not is_miniforge_installed.stat.exists
+
+- name: rm installer script
+  command: rm Miniforge3.sh
   when: not is_miniforge_installed.stat.exists
 
 - name: disbale auto-activation of base env
