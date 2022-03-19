@@ -93,7 +93,7 @@ filetype plugin indent on
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'git@github.com:Valloric/YouCompleteMe.git'
+Plug 'Valloric/YouCompleteMe'
 Plug 'gruvbox-community/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -109,7 +109,7 @@ Plug 'SirVer/ultisnips'
 call plug#end()
 
 " gruvbox
-colorscheme gruvbox
+silent! colorscheme gruvbox
 highlight Normal ctermbg=NONE
 
 " nerdtree
