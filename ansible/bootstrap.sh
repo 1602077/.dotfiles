@@ -17,9 +17,9 @@ if [ ! -d "$HOME/.dotfiles/" ]; then
     wget https://github.com/1602077/.dotfiles/archive/ansible.zip
     unzip ansible.zip && rm ansible.zip
     mv .dotfiles-ansible .dotfiles
-    zsh ~/.dotfiles/symlinks.sh
+    # zsh ~/.dotfiles/symlinks.sh
 fi
 
 brew install ansible
 ansible-playbook -i ./hosts setup.yml --verbose
-zsh ~/.dotfiles/symlinks.sh
+# zsh ~/.dotfiles/symlinks.sh
