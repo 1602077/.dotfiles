@@ -21,5 +21,5 @@ if [ ! -d "$HOME/.dotfiles/" ]; then
 fi
 
 brew install ansible
-ansible-playbook -i ./hosts setup.yml --verbose
+ansible-playbook -i ./hosts ~/.dotfiles/ansible/setup.yml --verbose
 # zsh ~/.dotfiles/symlinks.sh

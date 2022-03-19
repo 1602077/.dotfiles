@@ -1,6 +1,5 @@
 ---
-- hosts: all
-  connection: local
+- hosts: localhost
   roles:
     # - homebrew
     # - vim
