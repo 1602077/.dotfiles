@@ -6,6 +6,7 @@ homebrew_apps:
   - git
   - wget
   - tree
+  - ncdu
   - ripgrep
   - python
   - go
@@ -16,8 +17,12 @@ homebrew_casks:
   - stats
   - rectangle
   - font-hack-nerd-font
+  - appcleaner
+  - docker
+  - gimp
+  - google-drive
   - karabiner-elements
-  - selfcontrol
   - opera
-  # - docker
-  # - pgadmin4
+  - pgadmin4
+  - selfcontrol
+  - whatsapp
