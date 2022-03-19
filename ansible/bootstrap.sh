@@ -1,5 +1,4 @@
 #!/bin/zsh
-
 echo "\n>> RUNNING ANSIBLE BOOTSTRAP\n"
 
 if [[ $(command -v brew) == "" ]]; then
@@ -14,9 +13,10 @@ if [ ! -d "$HOME/.dotfiles/" ]; then
     echo ">> DOWNLOADING DOTFILES FROM GITHHUB..."
     cd ~
     brew install wget
-    wget https://github.com/1602077/.dotfiles/archive/main.zip
-    unzip main.zip && rm main.zip
-    mv .dotfiles-main .dotfiles
+    # change ansible.zip to main.zip on submitting pr 
+    wget https://github.com/1602077/.dotfiles/archive/ansible.zip
+    unzip ansible.zip && rm ansible.zip
+    mv .dotfiles-ansible .dotfiles
     zsh ~/.dotfiles/symlinks.sh
 fi
 
