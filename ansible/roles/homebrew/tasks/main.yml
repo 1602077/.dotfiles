@@ -1,0 +1,12 @@
+---
+- name: Install brew apps
+  homebrew:
+    name: "{{item}}"
+    state: latest
+  with_items: "{{homebrew_apps}}"
+
+- name: Install brew casks
+  homebrew_cask:
+    name: "{{item}}"
+    state: latest
+  with_items: "{{homebrew_casks}}"

@@ -1,0 +1,25 @@
+---
+- name: ensure karabiner is installed
+  stat:
+    path: "/Applications/Karabiner-Elements.app"
+  register: "is_karabiner_installed"
+
+- name: install karabiner if not
+  homebrew_cask:
+    name: "karabiner-elements"
+    state: latest
+  when: not is_karabiner_installed.stat.exists
+
+- name: setup config dir
+  file:
+    path: "~/.config/karabiner"
+    state: directory
+
+- name: symlink dotfile
+  file:
+    src : "~/.dotfiles/karabiner.json"
+    dest: "~/.config/karabiner/karabiner.json"
+    state: link
+
+- name: open karabiner
+  command: open /Applications/Karabiner-Elements.app
