@@ -6,6 +6,7 @@ homebrew_apps:
   - git
   - wget
   - tree
+  - bat
   - ncdu
   - ripgrep
   - python

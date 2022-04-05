@@ -6,20 +6,17 @@ if [[ $(command -v brew) == "" ]]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
     echo ">> UPDATING BREW..."
-    # brew update && brew upgrade && brew cleanup
+    brew update && brew upgrade && brew cleanup
 fi
 
 if [ ! -d "$HOME/.dotfiles/" ]; then
     echo ">> DOWNLOADING DOTFILES FROM GITHHUB..."
     cd ~
     brew install wget
-    # change ansible.zip to main.zip on submitting pr 
-    wget https://github.com/1602077/.dotfiles/archive/ansible.zip
-    unzip ansible.zip && rm ansible.zip
+    wget https://github.com/1602077/.dotfiles/archive/main.zip
+    unzip main.zip && rm main.zip
     mv .dotfiles-ansible .dotfiles
-    # zsh ~/.dotfiles/symlinks.sh
 fi
 
 brew install ansible
 ansible-playbook -i ./hosts ~/.dotfiles/ansible/setup.yml --verbose
-# zsh ~/.dotfiles/symlinks.sh
