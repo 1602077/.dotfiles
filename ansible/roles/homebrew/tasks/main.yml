@@ -10,3 +10,4 @@
     name: "{{item}}"
     state: latest
   with_items: "{{homebrew_casks}}"
+  ignore_errors: yes
