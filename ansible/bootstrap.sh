@@ -2,20 +2,20 @@
 echo "\n>> RUNNING ANSIBLE BOOTSTRAP\n"
 
 if [[ $(command -v brew) == "" ]]; then
-    echo ">> INSTALLING BREW..."
+    echo ">> INSTALLING BREW\n"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
-    echo ">> UPDATING BREW..."
+    echo ">> UPDATING BREW\n"
     brew update && brew upgrade && brew cleanup
 fi
 
 if [ ! -d "$HOME/.dotfiles/" ]; then
-    echo ">> DOWNLOADING DOTFILES FROM GITHHUB..."
+    echo ">> DOWNLOADING DOTFILES FROM GITHUB..."
     cd ~
     brew install wget
     wget https://github.com/1602077/.dotfiles/archive/main.zip
     unzip main.zip && rm main.zip
-    mv .dotfiles-ansible .dotfiles
+    mv .dotfiles-main .dotfiles
 fi
 
 brew install ansible
