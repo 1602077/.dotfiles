@@ -7,12 +7,14 @@ zstyle ':vcs_info:git:*' formats ':%F{70}%b%f'
 setopt PROMPT_SUBST
 PROMPT='%F{39}%2~%f${vcs_info_msg_0_} '
 
+export EDITOR='vim'
+
 # zsh-completions
 autoload -Uz compinit && compinit
 
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND="find ."
+export FZF_DEFAULT_COMMAND='find .'
 export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border'
 _fzf_comprun() {
   local command=$1
@@ -25,8 +27,8 @@ _fzf_comprun() {
     *)            fzf "$@" ;;
   esac
 }
-export BAT_THEME="gruvbox-dark"
-export BAT_STYLE="numbers,changes"
+export BAT_THEME='gruvbox-dark'
+export BAT_STYLE='numbers,changes'
 
 # custom commands
 source ~/.myCommands.sh
@@ -48,10 +50,14 @@ unset __conda_setup
 
 # aliases
 alias ll="ls -al"
+alias ga="git add"
 alias gs="git status"
 alias gc="git commit -m"
 alias gca="git commit -am"
+alias gp="git push"
 alias k="minikube kubectl --"
+alias tx="tmuxinator"
+alias txw="tmux list-windows | sed -n 's/.*layout \(.*\)] @.*/\1/p'"
 # rosetta x86 equivalent commands
 alias condax86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/condabin/conda"
 alias pipx86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/envs/pytorch_x86/bin/python -m pip"
