@@ -60,9 +60,9 @@ alias k="minikube kubectl --"
 alias tx="tmuxinator"
 alias txw="tmux list-windows | sed -n 's/.*layout \(.*\)] @.*/\1/p'"
 # rosetta x86 equivalent commands
-alias condax86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/condabin/conda"
-alias pipx86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/envs/pytorch_x86/bin/python -m pip"
-alias pythonx86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/envs/pytorch_x86/bin/python"
+# alias condax86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/condabin/conda"
+# alias pipx86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/envs/pytorch_x86/bin/python -m pip"
+# alias pythonx86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/envs/pytorch_x86/bin/python"
 
 # named directories
 hash -d personal=/Users/jcmunday/Documents/personal/
