@@ -10,6 +10,13 @@ PROMPT='%F{39}%2~%f${vcs_info_msg_0_} '
 export EDITOR='vim'
 
 # zsh-completions
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
 autoload -Uz compinit && compinit
 
 # fzf config
@@ -49,6 +56,7 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # aliases
+alias python="python3"
 alias ll="ls -al"
 alias ga="git add"
 alias gs="git status"

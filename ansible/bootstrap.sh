@@ -1,4 +1,4 @@
-#!/bin/zsh
+ #!/bin/zsh
 echo "\n>> RUNNING ANSIBLE BOOTSTRAP\n"
 
 if [[ $(command -v brew) == "" ]]; then
