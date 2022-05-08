@@ -1,4 +1,7 @@
 ---
+homebrew_taps:
+  - homebrew/cask-fonts
+
 homebrew_apps:
   - vim
   - tmux

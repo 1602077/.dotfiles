@@ -1,4 +1,9 @@
 ---
+- name: Add brew taps
+  community.general.homebrew_tap:
+    name: "{{item}}"
+  with_items: "{{homebrew_taps}}"
+
 - name: Install brew apps
   homebrew:
     name: "{{item}}"
@@ -11,3 +16,6 @@
     state: latest
   with_items: "{{homebrew_casks}}"
   ignore_errors: yes
+
+- name: Install fzf completion
+  shell: /opt/homebrew/opt/fzf/install

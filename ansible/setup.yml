@@ -1,8 +1,8 @@
 ---
 - hosts: localhost
   roles:
-    - homebrew
-    - vim
-    - terminal
-    - karabiner
-    - miniforge
+    - {role: 'terminal', tags: 'terminal'}
+    - {role: 'homebrew', tags: 'homebrew'}
+    - {role: 'karabiner', tags: 'karabiner'}
+    - {role: 'vim', tags: 'vim'}
+    # - {role: 'miniforge' tags: 'miniforge'}
