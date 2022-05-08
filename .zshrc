@@ -75,11 +75,14 @@ alias txw="tmux list-windows | sed -n 's/.*layout \(.*\)] @.*/\1/p'"
 # named directories
 hash -d personal=/Users/jcmunday/Documents/personal/
 hash -d books=/Users/jcmunday/Documents/computing/books
-hash -d go=/Users/jcmunday/Documents/computing/go/src/
 hash -d src=/Users/jcmunday/Documents/computing/
+hash -d go=/Users/jcmunday/Documents/computing/go/
 
 # go
-GOPATH=/Users/jcmunday/Documents/computing/go
-export GOPATH
-PATH=$PATH:$GOPATH/bin # Add GOPATH/bin to PATH for scripting
+export GOPATH=$HOME/go
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 export GO111MODULE=on
+
+# Created by `pipx` on 2022-05-08 16:25:33
+export PATH="$PATH:/Users/jcmunday/.local/bin"
