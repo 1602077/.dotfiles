@@ -164,6 +164,8 @@ let g:gitgutter_map_keys = 0
 nnoremap ]g :GitGutterNextHunk<CR>
 nnoremap [g :GitGutterPrevHunk<CR>
 nnoremap <leader>gt :GitGutterToggle<CR>
+autocmd InsertEnter * :GitGutterDisable
+autocmd InsertLeave * :GitGutterEnable
 
 " vim-go
 let g:go_fmt_command = "goimports"
