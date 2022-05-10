@@ -66,9 +66,6 @@ nnoremap <silent><leader>cd :lcd %:p:h<CR>
 nnoremap <silent><leader>q :bd<CR>
 nnoremap <silent><leader>B :Buffers<CR>
 
-nnoremap <silent>l. :lnext<CR>
-nnoremap <silent>l, :lprev<CR>
-
 " error jumping
 nnoremap <silent><leader>e :lne<CR>
 nnoremap <silent><leader>E :lprevious<CR>
