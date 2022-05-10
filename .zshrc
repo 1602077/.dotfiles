@@ -38,7 +38,7 @@ export BAT_THEME='gruvbox-dark'
 export BAT_STYLE='numbers,changes'
 
 # custom commands
-source ~/.myCommands.sh
+source ~/.dotfiles/.zsh-commands.sh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
