@@ -14,6 +14,7 @@ set incsearch
 set mouse=a
 set number
 set rnu
+set nocompatible
 set noerrorbells
 set ignorecase
 set shiftwidth=4
@@ -24,6 +25,7 @@ set softtabstop=4
 set spelllang=en_gb
 set splitbelow
 set tabstop=4
+" set termguicolors
 set termwinsize=15x0
 set undodir=~/.vim/undodir
 set undofile
@@ -83,6 +85,30 @@ nnoremap <silent><leader>W :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> 
 nnoremap <leader>cc :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" status line
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set laststatus=2
+
+function! GitBranch()
+    return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+    let l:branchname = GitBranch()
+    return strlen(l:branchname) > 0?'  '.l:branchname.':':''
+endfunction
+
+set statusline=
+set statusline+=%#GitGutterAdd#
+set statusline+=%{StatuslineGit()}
+set statusline+=%#LineNr#
+set statusline+=\%f
+set statusline+=%m
+set statusline+=%=
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\ [%p%%\]
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin install, config & remappings
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 filetype plugin indent on
@@ -99,17 +125,13 @@ Plug 'psf/black', { 'branch': 'stable' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 call plug#end()
 
 " gruvbox
 silent! colorscheme gruvbox
-highlight Normal ctermbg=NONE
+highlight Normal guibg=NONE ctermbg=NONE
 
 " nerdtree
 let g:NERDTreeMinimalUI=1
@@ -117,27 +139,6 @@ let g:NERDTreeRespectWildIgnore=1
 let g:NERDTreeShowHidden=1
 let g:NERDTreeQuitOnOpen=1
 nnoremap <silent><leader>F :NERDTreeToggle<CR>
-
-" vim-airline
-let g:airline_theme='minimalist'
-let g:airline_powerline_fonts = 1
-" let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:ariline#extensions#tabline#buffer_idx_mode=1
-let g:airline_detect_spelllang=0
-let g:airline#extensions#tabline#buffers_label = ''
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_left_alt_sep=''
-let g:airline_right_alt_sep=''
-let g:airline_section_x = '' " tagbar/filetype/venc
-let g:airline_section_y = '' " file encoding
-let g:airline_section_z = '' " %, line #, col#
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nnoremap <leader>A :AirlineToggle<CR>
 
 " vim-commentary
 nnoremap <silent><leader>/ :Commentary<CR>
@@ -155,7 +156,8 @@ nnoremap <expr><leader>f fugitive#head() != '' ? ':GFiles<CR>' : ':Files<CR>'
 " vim-gitgutter
 set signcolumn=number
 highlight! link SignColumn LineNr
-highlight GitGutterAdd    guifg=#009900 ctermfg=70
+" highlight GitGutterAdd    guifg=#009900 ctermfg=70
+highlight GitGutterAdd    guifg=#8fca4d ctermfg=70
 highlight GitGutterChange guifg=#bbbb00 ctermfg=214
 highlight GitGutterDelete guifg=#ff2222 ctermfg=52
 let g:gitgutter_sign_removed = '-'
@@ -169,6 +171,7 @@ autocmd InsertLeave * :GitGutterEnable
 " vim-go
 let g:go_fmt_command = "goimports"
 let g:go_template_autocreate = 0
+let g:go_auto_type_info = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
@@ -189,7 +192,8 @@ let g:snips_author="jcmunday"
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_show_diagnostics_ui = 1
-let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_signs = 1
+let g:ycm_echo_current_diagnostic = 1
 let g:ycm_always_populate_location_list = 0
 nnoremap <silent><leader>D :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
