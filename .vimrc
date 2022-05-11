@@ -95,19 +95,20 @@ endfunction
 
 function! StatuslineGit()
     let l:branchname = GitBranch()
-    return strlen(l:branchname) > 0?'  '.l:branchname.':':''
+    return strlen(l:branchname) > 0?'   '.l:branchname.' ':''
 endfunction
 
 set statusline=
-set statusline+=%#GitGutterAdd#
+set statusline+=%#GruvboxGreen#
 set statusline+=%{StatuslineGit()}
 set statusline+=%#LineNr#
-set statusline+=\%f
+set statusline+=\ %f
 set statusline+=%m
 set statusline+=%=
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\ [%p%%\]
 
+hi User1 guibg=#0a0a0a guifg=#0000ff
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin install, config & remappings
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -156,8 +157,7 @@ nnoremap <expr><leader>f fugitive#head() != '' ? ':GFiles<CR>' : ':Files<CR>'
 " vim-gitgutter
 set signcolumn=number
 highlight! link SignColumn LineNr
-" highlight GitGutterAdd    guifg=#009900 ctermfg=70
-highlight GitGutterAdd    guifg=#8fca4d ctermfg=70
+highlight GitGutterAdd    guifg=#009900 ctermfg=70
 highlight GitGutterChange guifg=#bbbb00 ctermfg=214
 highlight GitGutterDelete guifg=#ff2222 ctermfg=52
 let g:gitgutter_sign_removed = '-'
