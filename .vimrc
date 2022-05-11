@@ -101,6 +101,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 call plug#end()
@@ -167,6 +169,14 @@ autocmd InsertLeave * :GitGutterEnable
 " vim-go
 let g:go_fmt_command = "goimports"
 let g:go_template_autocreate = 0
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
 
 " vim-snippets
 let g:UltiSnipsExpandTrigger="<c-s>"
