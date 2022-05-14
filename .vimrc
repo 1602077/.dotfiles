@@ -25,7 +25,6 @@ set softtabstop=4
 set spelllang=en_gb
 set splitbelow
 set tabstop=4
-" set termguicolors
 set termwinsize=15x0
 set undodir=~/.vim/undodir
 set undofile
@@ -90,17 +89,21 @@ nnoremap <leader>cc :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "
 set laststatus=2
 
 function! GitBranch()
-    return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+    let g:git_branch =  system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
 
-function! StatuslineGit()
-    let l:branchname = GitBranch()
-    return strlen(l:branchname) > 0?'   '.l:branchname.' ':''
+function! GetGitBranch()
+        return strlen(g:git_branch) > 0?'   '.g:git_branch.' ':''
 endfunction
+
+aug StatuslineGit()
+    autocmd!
+    autocmd BufRead * call GitBranch()
+aug END
 
 set statusline=
 set statusline+=%#GruvboxGreen#
-set statusline+=%{StatuslineGit()}
+set statusline+=%{GetGitBranch()}
 set statusline+=%#LineNr#
 set statusline+=\ %f
 set statusline+=%m
@@ -108,7 +111,6 @@ set statusline+=%=
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\ [%p%%\]
 
-hi User1 guibg=#0a0a0a guifg=#0000ff
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin install, config & remappings
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -146,7 +148,6 @@ nnoremap <silent><leader>/ :Commentary<CR>
 vnoremap <silent><leader>/ :Commentary<CR>
 
 " vim-fugitive
-nnoremap <leader>g :Git 
 nnoremap <leader>gs :Git status<CR>
 nnoremap <leader>gc :Git commit -am "
 nnoremap <leader>gp :Git push origin
@@ -185,7 +186,6 @@ let g:go_highlight_types = 1
 let g:UltiSnipsExpandTrigger="<c-s>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-p>"
-
 let g:snips_author="jcmunday"
 
 " you complete me
