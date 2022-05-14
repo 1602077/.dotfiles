@@ -2,7 +2,7 @@
 
 - Make scripts exeuctable: `chmod u+x path/to/script.sh`.
 - Update crontab config: `crontab cronjobs.txt`.
-- List config or edit directly with `crontab -l` and `crontab -t` respectively.
+- List config or edit directly with `crontab -l` and `crontab -e` respectively.
 
 N.B To authenticate SSH requests use `keychain` and add the following to zsh profile:
 ```
