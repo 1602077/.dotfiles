@@ -88,6 +88,7 @@ nnoremap <leader>cc :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set laststatus=2
 
+let g:git_branch = ''
 function! GitBranch()
     let g:git_branch =  system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
