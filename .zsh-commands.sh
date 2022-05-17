@@ -12,3 +12,8 @@ function vimrc(){
 function zshrc(){
     vim ~/.dotfiles/.zshrc
 }
+
+function killport() {  
+    port=$(lsof -n -i4TCP:$1 | grep LISTEN | awk '{ print $2 }')
+    kill -9 $port 
+}

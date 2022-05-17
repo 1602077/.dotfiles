@@ -91,7 +91,7 @@ set laststatus=2
 let g:git_branch = ''
 
 function! GitBranch()
-    let g:git_branch =  system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+    let g:git_branch = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
 
 function! FormatGitBranch()
