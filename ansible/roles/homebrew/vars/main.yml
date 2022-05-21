@@ -19,6 +19,7 @@ homebrew_apps:
   - tmuxinator
   - keychain
   - pyenv
+  - z
 
 homebrew_casks:
   - stats

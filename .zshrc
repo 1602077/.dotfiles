@@ -84,5 +84,6 @@ export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 export GO111MODULE=on
 
-# Created by `pipx` on 2022-05-08 16:25:33
 export PATH="$PATH:/Users/jcmunday/.local/bin"
+
+source "$(brew --prefix)/etc/profile.d/z.sh"
