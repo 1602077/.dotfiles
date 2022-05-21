@@ -54,7 +54,6 @@ inoremap {;<CR>  {<CR>};<Esc>O
 let mapleader = " "
 
 " window management
-nnoremap <silent><leader>T :term<CR>
 nnoremap <silent><leader>h :wincmd h<CR>
 nnoremap <silent><leader>l :wincmd l<CR>
 nnoremap <silent><leader>j :wincmd j<CR>
