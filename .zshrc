@@ -67,6 +67,8 @@ alias glo="git log --oneline"
 alias k="minikube kubectl --"
 alias tx="tmuxinator"
 alias txw="tmux list-windows | sed -n 's/.*layout \(.*\)] @.*/\1/p'"
+# colourise test outputs for golang
+alias gtc='''sed ''/PASS/s//$(printf "\033[32mPASS\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'' '''
 # rosetta x86 equivalent commands
 # alias condax86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/condabin/conda"
 # alias pipx86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/envs/pytorch_x86/bin/python -m pip"
