@@ -1,4 +1,4 @@
 PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
-@reboot zsh ~/.dotfiles/cronjobs/brew-cleanup.sh
+@reboot zsh ~/.dotfiles/cronjobs/brew-cleanup.sh >/dev/null
 
