@@ -3,34 +3,35 @@ homebrew_taps:
   - homebrew/cask-fonts
 
 homebrew_apps:
-  - vim
-  - tmux
+  - bat
+  - cmake
   - fzf
   - git
-  - wget
-  - tree
-  - bat
-  - ncdu
-  - ripgrep
-  - python
   - go
-  - cmake
-  - nodejs
-  - tmuxinator
   - keychain
+  - kubectl
+  - ncdu
+  - nodejs
   - pyenv
+  - python
+  - ripgrep
+  - tmux
+  - tmuxinator
+  - tree
+  - vim
+  - wget
   - z
 
 homebrew_casks:
-  - stats
-  - rectangle
-  - font-hack-nerd-font
   - appcleaner
   - docker
+  - font-hack-nerd-font
   - gimp
   - google-drive
   - karabiner-elements
   - opera
   - pgadmin4
+  - rectangle
   - selfcontrol
+  - stats
   - whatsapp
