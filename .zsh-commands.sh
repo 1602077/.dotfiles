@@ -14,6 +14,6 @@ function zshrc(){
 }
 
 function killport() {  
-    port=$(lsof -n -i4TCP:$1 | grep LISTEN | awk '{ print $2 }')
+    port=$(lsof -n -i4TCP:$1 | grep LISTEN | awk '{ print $1 }')
     kill -9 $port 
 }

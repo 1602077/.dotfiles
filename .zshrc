@@ -2,7 +2,14 @@
 
 # profile config & load git info
 autoload -Uz vcs_info
-precmd() { vcs_info }
+function precmd() {
+    vcs_info
+    if [ -z "$NEW_LINE_BEFORE_PROMPT" ]; then
+        NEW_LINE_BEFORE_PROMPT=1
+    elif [ "$NEW_LINE_BEFORE_PROMPT" -eq 1 ]; then
+        echo ""
+    fi
+}
 zstyle ':vcs_info:git:*' formats ':%F{70}%b%f'
 setopt PROMPT_SUBST
 PROMPT='%F{39}%2~%f${vcs_info_msg_0_} '
@@ -89,3 +96,10 @@ export GO111MODULE=on
 export PATH="$PATH:/Users/jcmunday/.local/bin"
 
 source "$(brew --prefix)/etc/profile.d/z.sh"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jcmunday/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jcmunday/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jcmunday/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jcmunday/google-cloud-sdk/completion.zsh.inc'; fi
+
