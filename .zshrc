@@ -29,7 +29,7 @@ autoload -Uz compinit && compinit
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='find .'
-export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border'
+# export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border'
 _fzf_comprun() {
   local command=$1
   shift
@@ -41,6 +41,8 @@ _fzf_comprun() {
     *)            fzf "$@" ;;
   esac
 }
+# bat 
+alias cat="bat"
 export BAT_THEME='gruvbox-dark'
 export BAT_STYLE='numbers,changes'
 
@@ -71,7 +73,8 @@ alias gc="git commit -m"
 alias gca="git commit -am"
 alias gp="git push"
 alias glo="git log --oneline"
-alias k="minikube kubectl --"
+# alias k="minikube kubectl --"
+alias k="kubectl"
 alias tx="tmuxinator"
 alias txw="tmux list-windows | sed -n 's/.*layout \(.*\)] @.*/\1/p'"
 # colourise test outputs for golang

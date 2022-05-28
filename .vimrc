@@ -177,6 +177,25 @@ call plug#end()
 silent! colorscheme gruvbox
 highlight Normal guibg=NONE ctermbg=NONE
 
+" fzf
+set rtp+=/opt/homebrew/opt/fzf
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'relative': v:true, 'yoffset': 1.0 } }
+let g:fzf_layout = { 'window': 'split' }
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
 " nerdtree
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeRespectWildIgnore=1
@@ -194,7 +213,7 @@ nnoremap <leader>gc :Git commit -am "
 nnoremap <leader>gp :Git push origin
 nnoremap <leader>gP :Git push origin main<CR>
 nnoremap <leader>gd :Git diff<CR>
-nnoremap <expr><leader>f fugitive#head() != '' ? ':GFiles<CR>' : ':Files<CR>'
+nnoremap <silent><expr><leader>f FugitiveHead() != '' ? ':GFiles!<CR>' : ':Files!<CR>'
 
 " vim-gitgutter
 set signcolumn=number
