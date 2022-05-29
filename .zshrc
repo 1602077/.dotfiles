@@ -17,19 +17,12 @@ PROMPT='%F{39}%2~%f${vcs_info_msg_0_} '
 export EDITOR='vim'
 
 # zsh-completions
-if type brew &>/dev/null
-then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
-  autoload -Uz compinit
-  compinit
-fi
-autoload -Uz compinit && compinit
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='find .'
-# export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border'
+export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border'
 _fzf_comprun() {
   local command=$1
   shift
@@ -105,4 +98,4 @@ if [ -f '/Users/jcmunday/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jcmund
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/jcmunday/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jcmunday/google-cloud-sdk/completion.zsh.inc'; fi
-
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True

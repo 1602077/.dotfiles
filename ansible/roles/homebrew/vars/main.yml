@@ -21,6 +21,7 @@ homebrew_apps:
   - vim
   - wget
   - z
+  - zsh-autosuggestions
 
 homebrew_casks:
   - appcleaner

@@ -213,7 +213,7 @@ nnoremap <leader>gc :Git commit -am "
 nnoremap <leader>gp :Git push origin
 nnoremap <leader>gP :Git push origin main<CR>
 nnoremap <leader>gd :Git diff<CR>
-nnoremap <silent><expr><leader>f FugitiveHead() != '' ? ':GFiles!<CR>' : ':Files!<CR>'
+nnoremap <silent><expr><leader>f FugitiveHead() != '' ? ':GFiles<CR>' : ':Files<CR>'
 
 " vim-gitgutter
 set signcolumn=number
