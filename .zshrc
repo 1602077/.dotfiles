@@ -18,6 +18,7 @@ export EDITOR='vim'
 
 # zsh-completions
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^\' autosuggest-execute
 
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -34,6 +35,7 @@ _fzf_comprun() {
     *)            fzf "$@" ;;
   esac
 }
+
 # bat 
 alias cat="bat"
 export BAT_THEME='gruvbox-dark'
