@@ -1,34 +1,12 @@
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " .vimrc (neovim branch)
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" lsp config (go only currently)
+lua require("settings")
+
+
+" TODO: nvim highlight yank for a brief time
 syntax on
-set autoread
-set background=dark
-set bs=indent,eol,start
-set directory^=$HOME/.vim/tmp/
-set encoding=UTF-8
-set expandtab
-set history=50
-set incsearch
-set mouse=a
-set number
-set rnu
-set nocompatible
-set noerrorbells
-set ignorecase
-set shiftwidth=4
-set scrolloff=8
-set smartcase
-set smartindent
-set softtabstop=4
-set spelllang=en_gb
-set splitbelow
-set tabstop=4
-" set termwinsize=15x0
-" set undodir=~/.vim/undodir
-set undofile
-set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*
-set wrap
 
 " rm split bar colouring & chars
 set fillchars+=vert:\   
@@ -167,20 +145,21 @@ set statusline+=\ [%p%%\]               " % position in file
 
 call plug#begin('~/.dotfiles/nvim/autoload')
 
-Plug 'airblade/vim-gitgutter'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" general
 Plug 'gruvbox-community/gruvbox'
 Plug 'preservim/nerdtree'
-Plug 'psf/black', { 'branch': 'stable' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+" git
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdtree'
-
+Plug 'airblade/vim-gitgutter'
+" go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" python
+Plug 'psf/black', { 'branch': 'stable' }
 " telescope
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-
 " lsp
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
@@ -224,7 +203,6 @@ nnoremap <leader>gs :Git status<CR>
 nnoremap <leader>gc :Git commit -am "
 nnoremap <leader>gp :Git push origin
 nnoremap <leader>gP :Git push origin main<CR>
-" nnoremap <leader>gd :Git diff<CR>
 " nnoremap <silent><expr><leader>f FugitiveHead() != '' ? ':GFiles<CR>' : ':Files<CR>'
 
 " vim-gitgutter
@@ -279,5 +257,4 @@ augroup file_detections
 augroup END
 
 
-" lsp config (go only currently)
 lua require("lsp")

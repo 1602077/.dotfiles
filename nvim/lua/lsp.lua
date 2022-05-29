@@ -1,6 +1,6 @@
 -- LSP Setup
 -- Servers:
--- 1. go: `go install golang.org/x/tools/gopls@latest`
+-- 1. gopls: `go install golang.org/x/tools/gopls@latest`
 -- 2. python: `pip3 install python-lsp-server`
 -- 3. kubernetes: default yaml
 
