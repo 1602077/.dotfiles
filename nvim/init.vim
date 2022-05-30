@@ -1,55 +1,8 @@
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" .vimrc (neovim branch)
+" neovim config
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 lua require("general")
-
-" rm split bar colouring & chars
-set fillchars+=vert:\   
-highlight VertSplit cterm=NONE
-highlight TabLineFill cterm=NONE
-highlight TabLine ctermbg=NONE
-
-
-
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" plugins
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 lua require("plugins")
-
-" gruvbox
-silent! colorscheme gruvbox
-highlight Normal guibg=NONE ctermbg=NONE
-
-" nerdtree
-let g:NERDTreeMinimalUI=1
-let g:NERDTreeRespectWildIgnore=1
-let g:NERDTreeShowHidden=1
-let g:NERDTreeQuitOnOpen=1
-
-" vim-gitgutter
-highlight! link SignColumn LineNr
-highlight GitGutterAdd    guifg=#009900 ctermfg=70
-highlight GitGutterChange guifg=#bbbb00 ctermfg=214
-highlight GitGutterDelete guifg=#ff2222 ctermfg=52
-let g:gitgutter_sign_removed = '-'
-let g:gitgutter_map_keys = 0
-
-" vim-go
-let g:go_fmt_command = "goimports"
-let g:go_template_autocreate = 0
-let g:go_auto_type_info = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
-
-
 lua require("keymaps")
 lua require("autocmd")
 lua require("lsp")
@@ -57,7 +10,6 @@ lua require("lsp")
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Status line
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 let g:git_branch = ''
 
 function! GitBranch()
@@ -98,7 +50,7 @@ function! TabWarning()
     return b:tab_warning
 endfunction
 
-" runs statusline functions in an auto-command group 
+" runs statusline functions in an auto-command group
 aug statusline()
     autocmd!
     autocmd BufRead * call GitBranch()
@@ -112,7 +64,7 @@ set statusline+=%#GruvboxGreen#         " change colour scheme
 set statusline+=%{FormatGitBranch()}    " get git branch on buf read
 set statusline+=%#LineNr#               " change colour scheme
 set statusline+=\ %f                    " filename
-set statusline+=%m                      " modified? 
+set statusline+=%m                      " modified?
 set statusline+=%=                      " switch to rhs
 set statusline+=%#GruvboxOrangeBold#    " change colour scheme
 set statusline+=%{TabWarning()}         " check for mixed indent file

@@ -10,6 +10,7 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+
 -----------------------------------------------------------
 -- Insert Mode
 -----------------------------------------------------------
@@ -21,6 +22,7 @@ map('i', '{;<CR>', '{<CR>};<Esc>0')
 -- inoremap {{      {}<Left>
 -- inoremap ((      ()<Left>
 -- inoremap [[      []<Left>
+
 
 -----------------------------------------------------------
 -- Normal Mode
@@ -70,6 +72,7 @@ map('n', ']g', ':GitGutterNextHunk<CR>')
 map('n', '[g', ':GitGutterPrevHunk<CR>')
 map('n', '<leader>gt', ':GitGutterToggle<CR>')
 
+
 -----------------------------------------------------------
 -- Visual Mode
 -----------------------------------------------------------
@@ -80,6 +83,3 @@ map('v', 'K', ':m \'<-2<CR>gv=gv')
 -- Plugin: vim-commentary
 map('v', '<leader>/', ':Commentary<CR>')
 
------------------------------------------------------------
--- File Detections
------------------------------------------------------------

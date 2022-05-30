@@ -38,6 +38,12 @@ Plug 'saadparwaiz1/cmp_luasnip'
 vim.call('plug#end')
 vim.call('plug#helptags')
 
+-- load plugin configs
+require('plugins.configs.gruvbox')
+require('plugins.configs.nerdtree')
+require('plugins.configs.vim-gitgutter')
+require('plugins.configs.vim-go')
+
 -- TODO: Figure out how to do auto install of vim-plug & plugins
 
 -- auto install vim-plug and plugins:

@@ -10,7 +10,7 @@ local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protoco
 }
 
 vim.opt.completeopt={"menu", "menuone", "noselect"}
- 
+
 
 -- Autocompletions: nvim-cmp
 local cmp = require"cmp"
@@ -57,11 +57,22 @@ local attach = function()
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {buffer=0})
     vim.keymap.set("n", "R", vim.lsp.buf.references, {buffer=0})
 end
- 
+
 -- Golang: gopls
 require("lspconfig").gopls.setup{
-    on_attach = attach
-}
+    cmd = {'gopls'},
+        capabilities = capabilities,
+            settings = {
+              gopls = {
+                  analyses = {
+                    unusedparams = true,
+                    shadow = true,
+                 },
+                 staticcheck = true,
+                },
+            },
+        on_attach = on_attach,
+    }
 
 -- Python: pylsp
 require("lspconfig").pylsp.setup{
