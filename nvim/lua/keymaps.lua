@@ -53,9 +53,9 @@ map('n', '<leader>cc', ':execute "set colorcolumn=" . (&colorcolumn == "" ? "80"
 map('n', '<leader>F', ':NERDTreeToggle<CR>')
 
 -- Plugin: telescope
-map('n', '<leader>f', '<cmd>lua require(\'telescope.builtin\').find_files()<CR>')
-map('n', '<leader>rg', '<cmd>lua require(\'telescope.builtin\').live_grep()<CR>')
-map('n', '<leader>B', '<cmd>lua require(\'telescope.builtin\').buffers()<CR>')
+map('n', '<leader>f', "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<CR>")
+map('n', '<leader>rg', "<cmd>lua require('telescope.builtin').live_grep()<CR>")
+map('n', '<leader>B', "<cmd>lua require('telescope.builtin').buffers()<CR>")
 
 -- Plugin: vim-commentary
 map('n', '<leader>/', ':Commentary<CR>')

@@ -25,6 +25,7 @@ Plug('psf/black', {branch = 'stable'})
 -- telescope
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug ('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 
 -- lsp
 Plug 'neovim/nvim-lspconfig'
