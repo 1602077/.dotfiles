@@ -14,13 +14,20 @@ vim.api.nvim_command([[
     augroup END
 ]])
 
--- autocmd: gitgutter toggle in insert mode
+-- autocmd: strip trailing whitespace
 vim.api.nvim_command([[
-    augroup GitGutterToggle
-    autocmd InsertEnter * :GitGutterDisable
-    autocmd InsertLeave * :GitGutterEnable
-    augroup END 
+    augroup stripWS
+    autocmd BufWritePre * :%s/\s\+$//e
+    augrou END
 ]])
+
+-- autocmd: gitgutter toggle in insert mode
+-- vim.api.nvim_command([[
+--     augroup GitGutterToggle
+--     autocmd InsertEnter * :GitGutterDisable
+--     autocmd InsertLeave * :GitGutterEnable
+--     augroup END
+-- ]])
 
 -- autocmd: highlight on yank
 local yankGrp = api.nvim_create_augroup("YankHighlight", { clear = true })

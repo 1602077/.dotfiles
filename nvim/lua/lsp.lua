@@ -1,8 +1,11 @@
+-----------------------------------------------------------
 -- LSP Setup
+-----------------------------------------------------------
+
 -- Servers:
--- 1. gopls: `go install golang.org/x/tools/gopls@latest`
--- 2. python: `pip3 install python-lsp-server`
--- 3. kubernetes: default yaml
+-- 1. gopls:        `go install golang.org/x/tools/gopls@latest`
+-- 2. python:       `pip3 install python-lsp-server`
+-- 3. kubernetes:   default yaml
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
     require("lspconfig")["gopls"].setup {

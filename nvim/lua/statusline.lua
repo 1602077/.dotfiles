@@ -3,7 +3,7 @@
 -----------------------------------------------------------
 
 -- Git Branch
-vim.g['git_branch'] = ''
+vim.g["git_branch"] = ""
 
 function GitBranch()
     local branch = vim.fn.system("git branch --show-current 2> /dev/null | tr -d '\n'")
@@ -21,47 +21,27 @@ vim.api.nvim_create_autocmd({"FileType", "BufEnter", "FocusGained"}, {
 })
 
 -- LSP Diagnostics
--- TODO: finish
 
-local function lsp()
-  local count = {}
-  local levels = {
-    errors = "Error",
-    warnings = "Warn",
-    info = "Info",
-    hints = "Hint",
-  }
+vim.g["flagErrors"] = ""
 
-  for k, level in pairs(levels) do
-    count[k] = vim.tbl_count(vim.diagnostic.get(0, { severity = level }))
-  end
-
-  local errors = ""
-  local warnings = ""
-  local hints = ""
-  local info = ""
-
-  if count["errors"] ~= 0 then
-    errors = " %#LspDiagnosticsSignError# " .. count["errors"]
-  end
-  if count["warnings"] ~= 0 then
-    warnings = " %#LspDiagnosticsSignWarning# " .. count["warnings"]
-  end
-  if count["hints"] ~= 0 then
-    hints = " %#LspDiagnosticsSignHint# " .. count["hints"]
-  end
-  if count["info"] ~= 0 then
-    info = " %#LspDiagnosticsSignInformation# " .. count["info"]
-  end
-
-  return string.format(" %s %s %s", errors, warnings, hints, info)
+local function flagErrors ()
+    local count = vim.tbl_count(vim.diagnostic.get(0, {severity = "Error"}))
+    if count ~= 0 then
+        return "%#GruvboxRed#  "
+    else
+        return ""
+    end
 end
 
-vim.api.nvim_create_autocmd({'bufwritepost'}, {
-    callback = function()
-        vim.g.lspDiag = lsp()
-    end
-})
+-- Note: If calling function in statusline causes issues
+-- which to using this aucmd.
+
+-- vim.api.nvim_create_autocmd({'BufWrite'}, {
+--     callback = function()
+--         vim.g.flagErrors = flagErrors()
+--     end
+-- })
+
 
 
 -- Build Statusline
@@ -73,8 +53,9 @@ Statusline.active = function()
     vim.g['git_branch'],
     "%#LineNr#",
     " %f",
-    "%m  ",
-    -- vim.g['lspDiag'],
+    -- vim.g['flagErrors'],
+    flagErrors(),
+    "%m %#LineNr#",
     "%=",
     "%{&fileencoding?&fileencoding:&encoding}",
     " [%p%%]",
@@ -82,12 +63,14 @@ Statusline.active = function()
 end
 
 function Statusline.inactive()
-  return " %F"
+  return table.concat {
+   "%#GruvboxGreen#",
+    vim.g['git_branch'],
+    "%#LineNr#",
+    " %f",
+}
 end
 
-function Statusline.short()
-  return "%#StatusLineNC#   NvimTree"
-end
 
 -- Create augroup to determine when & what to display
 vim.api.nvim_exec([[
@@ -95,8 +78,51 @@ vim.api.nvim_exec([[
   au!
   au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
   au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
-  au WinEnter,BufEnter,FileType NvimTree setlocal statusline=%!v:lua.Statusline.short()
   augroup END
 ]], false)
 
+-----------------------------------------------------------
+-- Graveyard
+-----------------------------------------------------------
 
+-- LSP Diagnostics (Full)
+
+-- vim.g["lspDiag"] = ""
+-- local function lsp()
+--     local result = {}
+--     local levels = {
+--         errors = 'Error',
+--         warnings = 'Warning',
+--         info = 'Information',
+--     }
+
+--     for k, level in pairs(levels) do
+--         result[k] = vim.lsp.diagnostic.get_count(0, level)
+--     end
+
+--     local errors = ""
+--     local warnings = ""
+--     local info = ""
+
+--     if result['errors'] ~= 0 then
+--         errors = " %#GruvboxRed#  " .. result['errors']
+--     end
+
+--     if result['warnings'] ~= 0 then
+--         warnings = " %#GruvboxOrange#  " .. result['warnings']
+--     end
+
+--     if result['info'] ~= 0 then
+--         info = " %#GruvboxYellow#  " .. result['info']
+--     end
+
+--     return errors .. warnings .. info .. "%#Normal#"
+-- end
+
+-- vim.api.nvim_create_autocmd({'BufWrite'}, {
+--     callback = function()
+--         vim.g.lspDiag = lsp()
+--     end
+-- })
+
+-- help: list highlight groups with: `:so $VIMRUNTIME/syntax/hitest.vim`
