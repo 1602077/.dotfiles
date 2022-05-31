@@ -5,4 +5,5 @@
     - {role: 'homebrew', tags: 'homebrew'}
     - {role: 'karabiner', tags: 'karabiner'}
     - {role: 'vim', tags: 'vim'}
+    - {role: 'nvim', tags: 'nvim'}
     # - {role: 'miniforge' tags: 'miniforge'}

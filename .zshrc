@@ -14,10 +14,32 @@ zstyle ':vcs_info:git:*' formats ':%F{70}%b%f'
 setopt PROMPT_SUBST
 PROMPT='%F{39}%2~%f${vcs_info_msg_0_} '
 
+# aliases
+alias vim="nvim"
+alias python="python3"
+alias ll="ls -al"
+alias ga="git add"
+alias gs="git status"
+alias gc="git commit -m"
+alias gca="git commit -am"
+alias gp="git push"
+alias glo="git log --oneline"
+# alias k="minikube kubectl --"
+alias k="kubectl"
+alias tx="tmuxinator"
+alias txw="tmux list-windows | sed -n 's/.*layout \(.*\)] @.*/\1/p'"
+# colourise test outputs for golang
+alias gtc='''sed ''/PASS/s//$(printf "\033[32mPASS\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'' '''
+# rosetta x86 equivalent commands
+# alias condax86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/condabin/conda"
+# alias pipx86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/envs/pytorch_x86/bin/python -m pip"
+# alias pythonx86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/envs/pytorch_x86/bin/python"
+
 export EDITOR='vim'
 
 # zsh-completions
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^\' autosuggest-execute
 
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -34,7 +56,8 @@ _fzf_comprun() {
     *)            fzf "$@" ;;
   esac
 }
-# bat 
+
+# bat
 alias cat="bat"
 export BAT_THEME='gruvbox-dark'
 export BAT_STYLE='numbers,changes'
@@ -57,25 +80,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# aliases
-alias python="python3"
-alias ll="ls -al"
-alias ga="git add"
-alias gs="git status"
-alias gc="git commit -m"
-alias gca="git commit -am"
-alias gp="git push"
-alias glo="git log --oneline"
-# alias k="minikube kubectl --"
-alias k="kubectl"
-alias tx="tmuxinator"
-alias txw="tmux list-windows | sed -n 's/.*layout \(.*\)] @.*/\1/p'"
-# colourise test outputs for golang
-alias gtc='''sed ''/PASS/s//$(printf "\033[32mPASS\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'' '''
-# rosetta x86 equivalent commands
-# alias condax86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/condabin/conda"
-# alias pipx86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/envs/pytorch_x86/bin/python -m pip"
-# alias pythonx86="arch -x86_64 /Users/jcmunday/miniforge_x86_64/envs/pytorch_x86/bin/python"
 
 # named directories
 hash -d personal=/Users/jcmunday/Documents/personal/

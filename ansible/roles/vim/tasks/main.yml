@@ -21,6 +21,3 @@
 
 - name: run plug install
   command: vim +PlugInstall +qall
-
-- name: ycm install
-  command: python3 ~/.vim/plugged/YouCompleteMe/install.py --all

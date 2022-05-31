@@ -1,0 +1,22 @@
+---
+- name: create nvim directories
+  file:
+    path: "{{item}}"
+    state: directory
+  loop:
+    - ~/.dotfiles/nvim/autoload
+    - ~/.dotfiles/nvim/spell
+    - ~/.dotfiles/nvim/tmp
+    - ~/.dotfiles/nvim/undo
+
+- name: install vim-plug
+  command: curl -fLo ~/.dotfiles/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+- name: run plug install
+  command: nvim +PlugInstall +qall
+
+- name: install go lsp server
+  command: go install golang.org/x/tools/gopls@latest
+
+- name: install python lsp server
+  command: pip3 install python-lsp-server

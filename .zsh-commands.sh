@@ -6,14 +6,14 @@ function mkcd(){
 }
 
 function vimrc(){
-    vim ~/.dotfiles/.vimrc
+    vim ~/.dotfiles/nvim/
 }
 
 function zshrc(){
     vim ~/.dotfiles/.zshrc
 }
 
-function killport() {  
+function killport() {
     port=$(lsof -n -i4TCP:$1 | grep LISTEN | awk '{ print $1 }')
-    kill -9 $port 
+    kill -9 $port
 }
