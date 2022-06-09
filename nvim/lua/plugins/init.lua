@@ -39,7 +39,7 @@ Plug 'hrsh7th/cmp-path'
 -- snippets
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'rafamadriz/friendly-snippets'
+Plug 'SirVer/ultisnips'
 
 -- debugging
 Plug 'mfussenegger/nvim-dap'
