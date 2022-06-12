@@ -5,6 +5,7 @@
 vim.g.mapleader = " "
 
 vim.cmd [[syntax on]]
+vim.cmd [[filetype detect]]
 vim.cmd [[filetype plugin indent on]]
 
 vim.cmd [[highlight VertSplit cterm=NONE]]
