@@ -5,65 +5,49 @@ local map = require("utils").map
 local api = vim.api
 
 -- augroup: standard buffer operations
-api.nvim_create_augroup("bufops", { clear = true })
+api.nvim_create_augroup("bufcheck", { clear = true })
 
 -- autocmd: highlight on yank
-api.nvim_create_autocmd("bufops", {
-    group = "buf",
+api.nvim_create_autocmd("TextYankPost", {
+    group = "bufcheck",
     command = "silent! lua vim.highlight.on_yank()",
 })
 
--- autocmd: git messages start in insert mode
-api.nvim_create_autocmd("FileType",     {
-    group    = "bufops",
-    pattern  = { "gitcommit", "gitrebase", },
-    command  = "startinsert | 1"})
 
--- autocmd: Return to last edit position when opening files
-api.nvim_create_autocmd("BufReadPost",  {
-    group    = "bufops",
-    pattern  = "*",
-    callback = function()
-      if fn.line("'\"") > 0 and fn.line("'\"") <= fn.line("$") then
-         fn.setpos('.', fn.getpos("'\""))
-         vim.api.nvim_feedkeys("zz", "n", true)
-         end end })
+-- augroup: file type detections
+api.nvim_create_augroup("filedetect", { clear = true })
 
- -- autocmd: file detections
- api.nvim_command([[
- augroup FileDetect
- autocmd FileType text setlocal spell
- autocmd FileType tex setlocal spell
- autocmd FileType markdown setlocal spell
- autocmd BufWritePre *.py execute ':Black'
- augroup END
- ]])
+-- autocmd: Enable spell checking for certain file types
+api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    group = "filedetect",
+    pattern = { "*.txt", "*.md", "*.tex" },
+    command = "setlocal spell",
+})
 
- -- autocmd: strip trailing whitespace
- api.nvim_command([[
- augroup stripWS
- autocmd BufWritePre * :%s/\s\+$//e
- augrou END
- ]])
+-- autocmd: run python formatter on buffer write
+api.nvim_create_autocmd("BufWritePre", {
+    group = "filedetect",
+    pattern = "*.py",
+    command = ":Black",
+})
 
- -- autocmd: gitgutter toggle in insert mode
- -- vim.api.nvim_command([[
- --     augroup GitGutterToggle
- --     autocmd InsertEnter * :GitGutterDisable
- --     autocmd InsertLeave * :GitGutterEnable
- --     augroup END
- -- ]])
+-- autocmd: recompile latex post buf write
+api.nvim_create_autocmd("BufWritePost", {
+    group = "filedetect",
+    pattern = "*.tex",
+    command = ":!pdflatex %",
+})
+
+-- autocmd: strip trailing whitespace
+-- api.nvim_command([[
+-- augroup stripWS
+-- autocmd BufWritePre * :%s/\s\+$//e
+-- augrou END
+-- ]])
 
 -- autocmd: go mappings
-api.nvim_command([[
-augroup GoMappings
-autocmd FileType go map('n', '<leader>t', ':GoTest')
-augroup END
-]])
-
--- autocmd:latex
-api.nvim_command([[
-augroup FileTypeDetect
-autocmd BufNewFile,BufRead *t.tex map('n', '<leader>pl', ':!pdflatex %<CR>')
-augroup END
-]])
+-- api.nvim_command([[
+-- augroup GoMappings
+-- autocmd FileType go map('n', '<leader>t', ':GoTest')
+-- augroup END
+-- ]])
