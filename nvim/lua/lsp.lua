@@ -76,7 +76,7 @@ require("lspconfig").gopls.setup{
                  staticcheck = true,
                 },
             },
-        on_attach = on_attach,
+        on_attach = attach,
     }
 
 -- Python: pylsp

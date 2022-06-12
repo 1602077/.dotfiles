@@ -82,6 +82,9 @@ map('n', '<leader>dO', ":lua require'dapui'.open()<CR>")
 map('n', '<leader>dT', ":lua require'dapui'.toggle()<CR>")
 map('n', '<leader>dC', ":lua require'dapui'.close()<CR>")
 
+-- Resource dotfiles
+map('n', '<leader><leader>s', ':source ~/.dotfiles/nvim/init.lua<CR>')
+
 -----------------------------------------------------------
 -- Visual Mode
 -----------------------------------------------------------
