@@ -5,7 +5,7 @@
 -- Servers:
 -- 1. gopls:        `go install golang.org/x/tools/gopls@latest`
 -- 2. python:       `pip3 install python-lsp-server`
--- 3. kubernetes:   default yaml
+-- 3. kubernetes:   `brew install yaml-language-server`
 
 vim.opt.completeopt={"menu", "menuone", "noselect"}
 
@@ -54,8 +54,8 @@ local attach = function()
     vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, {buffer=0})
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {buffer=0})
 
-    vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, {buffer=0})
-    vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, {buffer=0})
+    vim.keymap.set("n", "]e", vim.diagnostic.goto_next, {buffer=0})
+    vim.keymap.set("n", "[e", vim.diagnostic.goto_prev, {buffer=0})
     vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", {buffer=0})
     -- Put telescope diagnostics in quickfix list using <Ctrl>+q
 
@@ -81,14 +81,17 @@ require("lspconfig").gopls.setup{
 
 -- Python: pylsp
 require("lspconfig").pylsp.setup{
-    on_attach = attach
+    capabilities = capabilities,
+    on_attach = attach,
 }
 
 -- Kubernetes: yaml
 require("lspconfig").yamlls.setup{
+    capabilities = capabilities,
+    on_attach = attach,
     settings = {
         yaml = {
-            schemas = { kubernetes = "globPattern"},
+            schemas = { kubernetes = "/*.yaml"},
         }
     }
 }
