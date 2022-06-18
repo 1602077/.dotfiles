@@ -20,3 +20,6 @@
 
 - name: install python lsp server
   command: pip3 install python-lsp-server
+
+- name: install k8s lsp server
+  command: brew install yaml-language-server
