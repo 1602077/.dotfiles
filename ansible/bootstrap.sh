@@ -13,7 +13,7 @@ if [ ! -d "$HOME/.dotfiles/" ]; then
     echo ">> DOWNLOADING DOTFILES FROM GITHUB..."
     cd ~
     brew install git
-    git clone https://github.com/1602077/.dotfiles
+    git clone git@github.com:1602077/.dotfiles.git
 fi
 
 brew install ansible

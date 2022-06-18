@@ -13,7 +13,7 @@
   command: curl -fLo ~/.dotfiles/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 - name: run plug install
-  command: nvim +PlugInstall +qall
+  command: command vim +PlugInstall +qall
 
 - name: install go lsp server
   command: go install golang.org/x/tools/gopls@latest
