@@ -12,10 +12,8 @@ fi
 if [ ! -d "$HOME/.dotfiles/" ]; then
     echo ">> DOWNLOADING DOTFILES FROM GITHUB..."
     cd ~
-    brew install wget
-    wget https://github.com/1602077/.dotfiles/archive/main.zip
-    unzip main.zip && rm main.zip
-    mv .dotfiles-main .dotfiles
+    brew install git
+    git clone https://github.com/1602077/.dotfiles
 fi
 
 brew install ansible
