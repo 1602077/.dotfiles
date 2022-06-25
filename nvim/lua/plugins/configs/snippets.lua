@@ -14,6 +14,8 @@ local func = ls.function_node
 local choice = ls.choice_node
 local dynamicn = ls.dynamic_node
 
+local fmt = require("luasnip.extras.fmt").fmta
+
 local date = function() return {os.date('%x')} end
 
 ls.add_snippets(nil, {
@@ -22,8 +24,8 @@ ls.add_snippets(nil, {
         snip({
             trig = "a",
             namr = "Name & Date",
-            dscr = "Displays my name and current date",
-        }, {
+            dscr = "Displays my name and the current date",
+        },{
             text({"(Jack, "}),
             func(date, {}),
             text({")"}),
@@ -33,9 +35,8 @@ ls.add_snippets(nil, {
     go = {
         snip({
             trig = "td",
-            namr = "Todo",
-            dscr = "Write a TODO comment with name & date",
-        }, {
+            dscr = "Writes a TODO comment with name & date",
+        },{
             text({"// TODO (Jack, "}),
             func(date, {}),
             text({"): "}),
@@ -44,14 +45,42 @@ ls.add_snippets(nil, {
         }),
         snip({
             trig = "fm",
-            namr = "Fix Me",
-            dscr = "Write a FIXME comment with name & date",
+            dscr = "Writes a FIXME comment with name & date",
         }, {
             text({"// FIXME (Jack, "}),
             func(date, {}),
             text({"): "}),
             insert(0),
 
+        }),
+        snip({
+            trig = "ff",
+            dscr = "Creates a go function",
+        },{
+            text({"func "}), insert(1, "xxx"), text({"("}),
+            insert(2),
+            text({"){","   "}),
+            insert(3),
+            text({"", "}"}),
+        }),
+        snip({
+            trig = "main",
+            dscr = "Creates a main function"
+
+        },{
+            text({"func main() {", "    "}),
+            insert(0),
+            text({"", "}"}),
+
+        }),
+        snip({
+            trig = "forr",
+            dscr = "Create a for-range loop.",
+        },{
+            text({"for "}), insert(1), text({" , "}),
+            insert(2), text({" := range "}), insert(3),  text({" {"}),
+            text({"","  "}), insert(4),
+            text({"", "}"}),
         }),
     },
 
@@ -70,4 +99,4 @@ ls.add_snippets(nil, {
 
 })
 
-require("luasnip.loaders.from_vscode").lazy_load()
+-- require("luasnip.loaders.from_vscode").lazy_load()
