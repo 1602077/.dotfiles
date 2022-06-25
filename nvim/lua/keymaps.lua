@@ -8,9 +8,9 @@ local map = require("utils").map
 -- Insert Mode
 -----------------------------------------------------------
 
-map('i', '[<CR>', '[<CR>]<Esc>0')
-map('i', '{<CR>', '{<CR>}<Esc>0')
-map('i', '{;<CR>', '{<CR>};<Esc>0')
+map('i', '[<CR>', '[<CR>]<Esc>O')
+map('i', '{<CR>', '{<CR>}<Esc>O')
+map('i', '{;<CR>', '{<CR>};<Esc>O')
 
 -- inoremap {{      {}<Left>
 -- inoremap ((      ()<Left>
