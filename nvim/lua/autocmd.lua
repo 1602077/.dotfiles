@@ -21,7 +21,7 @@ api.nvim_create_augroup("filedetect", { clear = true })
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     group = "filedetect",
     pattern = { "*.txt", "*.md", "*.tex" },
-    command = "setlocal spell",
+    command = "set spell",
 })
 
 -- autocmd: run python formatter on buffer write

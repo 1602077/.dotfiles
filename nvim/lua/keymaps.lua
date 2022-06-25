@@ -50,7 +50,8 @@ map('n', '<leader>F', ':NERDTreeToggle<CR>')
 -- Plugin: telescope
 map('n', '<leader>f', "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<CR>")
 map('n', '<leader>rg', "<cmd>lua require('telescope.builtin').live_grep()<CR>")
-map('n', '<leader>B', "<cmd>lua require('telescope.builtin').buffers()<CR>")
+map('n', '<leader>gb', "<cmd>lua require('telescope.builtin').git_branches()<CR>")
+
 
 -- Plugin: vim-commentary
 map('n', '<leader>/', ':Commentary<CR>')
