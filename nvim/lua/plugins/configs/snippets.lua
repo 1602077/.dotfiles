@@ -82,6 +82,39 @@ ls.add_snippets(nil, {
             text({"","  "}), insert(4),
             text({"", "}"}),
         }),
+        snip({
+            trig="pf",
+            dscr="fmt.Printf()"
+        },{
+            text({'fmt.Printf("'}),insert(1), text({'", '}), insert(2), text({")"})
+        }),
+        snip({
+            trig="lf",
+            dscr="log.Printf()"
+        },{
+            text({'log.Printf("'}),insert(1), text({'", '}), insert(2), text({")"})
+        }),
+        snip({
+            trig="pl",
+            dscr="fmt.Println()"
+        },{
+            text({"fmt.Println("}),insert(1), text({")"})
+        }),
+        snip({
+            trig="ll",
+            dscr="log.Println()"
+        },{
+            text({"log.Println("}),insert(1), text({")"})
+        }),
+        snip({
+            trig="gf",
+            dscr="Create a go func()"
+        },{
+            text({"go func("}), insert(1), text({") {"}),
+            text({"", "    "}), insert(2),
+            text({"", "}("}), insert(3), text({")", ""})
+
+        }),
     },
 
     yaml = {
